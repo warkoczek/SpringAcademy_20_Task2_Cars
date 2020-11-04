@@ -1,0 +1,84 @@
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
+
+import java.util.List;
+import java.util.Optional;
+
+
+@RestController
+@RequestMapping("/cars")
+public class CarController {
+    private final CarServiceImpl carService;
+
+    public CarController(CarServiceImpl carService) {
+        this.carService = carService;
+    }
+    //get all elements
+    @GetMapping
+    public ResponseEntity<List<Car>> getCars(){
+        List<Car> cars = carService.showCars();
+        if(!cars.isEmpty()){
+            return new ResponseEntity<>(cars, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    //get elements by id
+    @GetMapping("/car/{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
+        Optional<Car> car = carService.showCarById(id);
+        if(car.isPresent()){
+            return new ResponseEntity<>(car.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    //get elements by color
+    @GetMapping("/color")
+    public ResponseEntity<List<Car>> getCarsByColor(@RequestParam(value = "color") String color){
+        List<Car> cars = carService.showCarsByColor(color);
+        if(!cars.isEmpty()){
+            return new ResponseEntity<>(cars, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    //add element
+    @PostMapping("/add")
+    public ResponseEntity addCar(@RequestBody Car car){
+        boolean added = carService.createCar(car);
+        if(added){
+            return new ResponseEntity(HttpStatus.CREATED);
+        }
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    //update element
+    @PutMapping("/update")
+    public ResponseEntity modifyCar(@RequestBody Car car){
+       boolean updated = carService.updateColor(car);
+       if(updated) {
+           return new ResponseEntity<>(HttpStatus.OK);
+       }
+       return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+    // update elements color field
+    @PatchMapping("/updateColor")
+    public ResponseEntity<Car> modifyColor(@RequestParam(value = "id") Long id, @RequestParam(value = "color") String color){
+        Optional<Car> updatedCar = carService.updateColor(id, color);
+        if(updatedCar.isPresent()){
+            return new ResponseEntity<>(updatedCar.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    //delete element
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteCar(@PathVariable(value = "id") Long id){
+        boolean carDeleted = carService.deleteCar(id);
+        if(carDeleted){
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+}
