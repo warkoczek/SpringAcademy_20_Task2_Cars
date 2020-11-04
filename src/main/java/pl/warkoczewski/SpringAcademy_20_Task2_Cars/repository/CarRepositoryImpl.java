@@ -57,12 +57,21 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public Optional<Car> updateColor(Long id, String color) {
-        Optional<Car> first = cars.stream().filter(car -> car.getId().equals(id)).findFirst();
-        if(first.isPresent()){
-            first.get().setColor(color);
+    public Optional<Car> patchUpdate(Long id, String mark, String model, String color) {
+        Optional<Car> updatable = cars.stream().filter(car -> (car.getId().equals(id))).findFirst();
+        if(!updatable.isPresent()){
+            return Optional.empty();
         }
-        return first;
+        if(mark != null){
+            updatable.get().setMark(mark);
+        }
+        if(model != null){
+            updatable.get().setModel(model);
+        }
+        if(color != null){
+            updatable.get().setMark(color);
+        }
+        return updatable;
     }
 
     @Override

@@ -63,10 +63,13 @@ public class CarController {
        }
        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
-    // update elements color field
-    @PatchMapping("/updateColor")
-    public ResponseEntity<Car> modifyColor(@RequestParam(value = "id") Long id, @RequestParam(value = "color") String color){
-        Optional<Car> updatedCar = carService.updateColor(id, color);
+    // update some car fields
+    @PatchMapping("/patchUpdate/{id}")
+    public ResponseEntity<Car> modifyCarPartially(@PathVariable(value = "id") Long id
+            , @RequestParam(value = "mark", required = false) String mark
+            , @RequestParam(value = "model", required = false) String model
+            , @RequestParam(value = "color", required = false) String color){
+        Optional<Car> updatedCar = carService.patchUpdate(id, mark, model, color);
         if(updatedCar.isPresent()){
             return new ResponseEntity<>(updatedCar.get(), HttpStatus.OK);
         }
