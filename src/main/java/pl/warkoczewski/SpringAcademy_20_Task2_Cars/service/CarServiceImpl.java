@@ -2,6 +2,7 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service;
 
 import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.CarRepositoryImpl;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> showCarsByColor(String color) {
+    public List<Car> showCarsByColor(Color color) {
         return carRepository.findCarsByColor(color);
     }
     @Override

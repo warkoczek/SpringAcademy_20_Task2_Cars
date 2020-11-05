@@ -3,6 +3,7 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository;
 import org.springframework.stereotype.Repository;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.exception.CarNotFoundException;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,9 @@ public class CarRepositoryImpl implements CarRepository {
 
     public CarRepositoryImpl() {
         cars = new ArrayList<>();
-        cars.add(new Car(1l, "Volkswagen", "Golf", "black"));
-        cars.add(new Car(2l, "Renault", "Clio", "silver"));
-        cars.add(new Car(3l, "Fiat", "Panda", "red"));
+        cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
+        cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
+        cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
         nextId = (long) (cars.size() + 1);
     }
 
@@ -32,8 +33,8 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public List<Car> findCarsByColor(String color) {
-        return cars.stream().filter(car -> car.getColor().equalsIgnoreCase(color)).collect(Collectors.toList());
+    public List<Car> findCarsByColor(Color color) {
+        return cars.stream().filter(car -> color.equals(car.getColor())).collect(Collectors.toList());
     }
     @Override
     public boolean addCar(Car car) {

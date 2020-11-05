@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class CarController {
     }
     //get elements by color
     @GetMapping("/color")
-    public ResponseEntity<List<Car>> getCarsByColor(@RequestParam(value = "color") String color){
+    public ResponseEntity<List<Car>> getCarsByColor(@RequestParam(value = "color") Color color){
         List<Car> cars = carService.showCarsByColor(color);
         if(!cars.isEmpty()){
             return new ResponseEntity<>(cars, HttpStatus.OK);

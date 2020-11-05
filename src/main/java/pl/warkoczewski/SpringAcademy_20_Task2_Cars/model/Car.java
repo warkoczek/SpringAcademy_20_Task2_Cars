@@ -9,9 +9,9 @@ public class Car {
     private Long id;
     private String mark;
     private String model;
-    private String color;
+    private Color color;
 
-    public Car(String mark, String model, String color) {
+    public Car(String mark, String model, Color color) {
         this.mark = mark;
         this.model = model;
         this.color = color;
