@@ -35,8 +35,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean updateColor(Car car) {
-        return carRepository.update(car);
+    public boolean updateCar(Car car) {
+        return carRepository.updateCar(car);
     }
 
     @Override

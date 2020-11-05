@@ -45,10 +45,10 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public boolean update(Car car) {
+    public boolean updateCar(Car car) {
         Optional<Car> first = cars.stream().filter(car1 -> car1.getId().equals(car.getId())).findFirst();
         if(first.isPresent()){
-            cars.remove(first);
+            cars.remove(first.get());
             cars.add(car);
             return true;
         }

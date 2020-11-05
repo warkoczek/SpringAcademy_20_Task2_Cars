@@ -10,7 +10,7 @@ public interface CarRepository {
     Optional<Car> findCarById(Long id);
     List<Car> findCarsByColor(String color);
     boolean addCar(Car car);
-    boolean update(Car car);
+    boolean updateCar(Car car);
     Optional<Car> patchUpdate(Long id, String mark, String model, String color);
 
     boolean removeCar(Long id);

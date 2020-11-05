@@ -10,7 +10,7 @@ public interface CarService {
     Optional<Car> showCarById(Long id);
     List<Car> showCarsByColor(String color);
     boolean createCar(Car car);
-    boolean updateColor(Car car);
+    boolean updateCar(Car car);
     Optional<Car> patchUpdate(Long id, String mark, String model, String color);
     boolean deleteCar(Long id);
 }

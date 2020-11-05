@@ -1,6 +1,7 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
@@ -19,7 +20,7 @@ public class CarController {
         this.carService = carService;
     }
     //get all elements
-    @GetMapping
+    @GetMapping(produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<Car>> getCars(){
         List<Car> cars = carService.showCars();
         if(!cars.isEmpty()){
@@ -57,7 +58,7 @@ public class CarController {
     //update element
     @PutMapping("/update")
     public ResponseEntity modifyCar(@RequestBody Car car){
-       boolean updated = carService.updateColor(car);
+       boolean updated = carService.updateCar(car);
        if(updated) {
            return new ResponseEntity<>(HttpStatus.OK);
        }
