@@ -46,8 +46,11 @@ public class CarController {
         if(car.isPresent()){
             modelAndView.addObject("car", car.get());
             modelAndView.setViewName("car/car");
+            return modelAndView;
         }
+         modelAndView.setViewName("noCar");
         return modelAndView;
+
     }
     @GetMapping("/search/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){

@@ -6,6 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 public class Car {
+
     private Long id;
     private String mark;
     private String model;
