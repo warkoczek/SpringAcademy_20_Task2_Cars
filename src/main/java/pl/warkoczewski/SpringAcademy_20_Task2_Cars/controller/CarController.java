@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
@@ -40,12 +41,12 @@ public class CarController {
         return "/car/search";
     }
     @PostMapping("/search")
-    public String showCarById(@RequestParam(value = "id") Long id){
+    public String showCarById(@RequestParam(value = "id") Long id, Model model){
         Optional<Car> car = carService.showCarById(id);
         if(car.isPresent()){
-
+            model.addAttribute("car", car.get());
         }
-        return "redirect:/car/search";
+        return "car/car";
     }
     @GetMapping("/search/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
