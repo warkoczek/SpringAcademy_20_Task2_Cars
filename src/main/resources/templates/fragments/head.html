@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="headFragment">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <style>
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: Brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<!-- create navigation bar (header) -->
+<nav th:fragment="mainNavFragment" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="submit" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/cars/home}">Home</a>
+            <a class="navbar-brand" href="#" th:href="@{/}">Cars</a>
+            <a class="navbar-brand" href="#" th:href="@{/farm/searchFarms}">Rent</a>
+            <a class="navbar-brand" href="#" th:href="@{/farm/searchFarms}">Buy</a>
+            <a class="navbar-brand" href="#" th:href="@{/register/registrationForm}">Register</a>
+            <a class="navbar-brand" href="#" th:href="@{/register/login}">Log in</a>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+</body>
+</html>
