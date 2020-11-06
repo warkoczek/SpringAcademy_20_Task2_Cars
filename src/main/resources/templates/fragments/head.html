@@ -2,16 +2,14 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:fragment="headFragment">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+    <title>Head</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
         footer {
             text-align: center;
             padding: 3px;
-            background-color: Brown;
+            background-color: Black;
             color: white;
         }
     </style>
@@ -29,11 +27,6 @@
                     class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" th:href="@{/cars/home}">Home</a>
-            <a class="navbar-brand" href="#" th:href="@{/}">Cars</a>
-            <a class="navbar-brand" href="#" th:href="@{/farm/searchFarms}">Rent</a>
-            <a class="navbar-brand" href="#" th:href="@{/farm/searchFarms}">Buy</a>
-            <a class="navbar-brand" href="#" th:href="@{/register/registrationForm}">Register</a>
-            <a class="navbar-brand" href="#" th:href="@{/register/login}">Log in</a>
         </div>
     </div>
 </nav>

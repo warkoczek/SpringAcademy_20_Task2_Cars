@@ -6,8 +6,8 @@
     <title>Home Page</title>
 </head>
 <body>
-<nav th:replace="~{fragments/head :: mainNavFragment}"></nav>
-
+<nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
 <h1>The land of cars</h1>
+<footer th:insert="~{fragments/footer :: footerFragment}"></footer>
 </body>
 </html>
