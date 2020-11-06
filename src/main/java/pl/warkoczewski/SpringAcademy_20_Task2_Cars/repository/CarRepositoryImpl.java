@@ -6,6 +6,7 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,10 +17,11 @@ public class CarRepositoryImpl implements CarRepository {
     private Long nextId;
 
     public CarRepositoryImpl() {
-        cars = new ArrayList<>();
-        cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
-        cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
-        cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
+        cars = Arrays.asList(
+                new Car(1l, "Volkswagen", "Golf", Color.BLACK),
+                new Car(2l, "Renault", "Clio", Color.SILVER),
+                new Car(3l, "Fiat", "Panda", Color.RED),
+                new Car(4l, "Volvo", "S40", Color.VIOLET));
         nextId = (long) (cars.size() + 1);
     }
 
