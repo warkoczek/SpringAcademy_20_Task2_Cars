@@ -21,6 +21,27 @@
 </div>
 <br>
 <br>
+<div class="container">
+    <div th:object="car">
+        <h2>Car with id</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Mark</th>
+                <th>Model</th>
+                <th>Color</th>
+            </tr>
+            <tr>
+                <td th:text="${car.id}"></td>
+                <td th:text="${car.mark}"></td>
+                <td th:text="${car.model}"></td>
+                <td th:text="${car.color}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<br>
 <footer th:insert="~{fragments/footer :: footerFragment}"></footer>
 </body>
 </html>

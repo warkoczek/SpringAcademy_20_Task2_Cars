@@ -39,6 +39,14 @@ public class CarController {
     public String getSearchPage(){
         return "/car/search";
     }
+    @PostMapping("/search")
+    public String showCarById(@RequestParam(value = "id") Long id){
+        Optional<Car> car = carService.showCarById(id);
+        if(car.isPresent()){
+
+        }
+        return "redirect:/car/search";
+    }
     @GetMapping("/search/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
         Optional<Car> car = carService.showCarById(id);
