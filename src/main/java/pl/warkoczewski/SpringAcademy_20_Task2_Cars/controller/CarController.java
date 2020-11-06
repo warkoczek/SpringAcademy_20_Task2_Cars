@@ -41,12 +41,13 @@ public class CarController {
         return "/car/search";
     }
     @PostMapping("/search")
-    public String showCarById(@RequestParam(value = "id") Long id, Model model){
+    public ModelAndView showCarById(@RequestParam(value = "id") Long id, ModelAndView modelAndView){
         Optional<Car> car = carService.showCarById(id);
         if(car.isPresent()){
-            model.addAttribute("car", car.get());
+            modelAndView.addObject("car", car.get());
+            modelAndView.setViewName("car/car");
         }
-        return "car/car";
+        return modelAndView;
     }
     @GetMapping("/search/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
