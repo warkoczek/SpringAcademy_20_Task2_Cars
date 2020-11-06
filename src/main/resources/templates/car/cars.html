@@ -16,12 +16,16 @@
             <th>Mark</th>
             <th>Model</th>
             <th>Color</th>
+            <th>Action</th>
         </tr>
         <tr th:each="car : ${cars}">
             <td th:text="${car.id}"></td>
             <td th:text="${car.mark}"></td>
             <td th:text="${car.model}"></td>
             <td th:text="${car.color}"></td>
+            <td>
+                <button th:href="@{cars/modify}">Modify</button>
+            </td>
 
             <td></td>
         </tr>
