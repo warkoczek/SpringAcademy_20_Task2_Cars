@@ -3,7 +3,9 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
@@ -12,13 +14,18 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RestController
+@Controller
 @RequestMapping("/cars")
 public class CarController {
     private final CarServiceImpl carService;
 
     public CarController(CarServiceImpl carService) {
         this.carService = carService;
+    }
+    //home
+    @GetMapping("/home")
+    public String getHomePage(){
+        return "home";
     }
     //get all elements
     @GetMapping(produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
