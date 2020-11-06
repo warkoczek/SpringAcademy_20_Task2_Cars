@@ -35,7 +35,11 @@ public class CarController {
         return "car/cars";
     }
     //get elements by id
-    @GetMapping("/car/{id}")
+    @GetMapping("/search")
+    public String getSearchPage(){
+        return "/car/search";
+    }
+    @GetMapping("/search/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
         Optional<Car> car = carService.showCarById(id);
         if(car.isPresent()){
