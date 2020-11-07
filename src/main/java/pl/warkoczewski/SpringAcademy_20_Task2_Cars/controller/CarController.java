@@ -79,8 +79,10 @@ public class CarController {
         return "car/add";
     }
     @PostMapping("/add")
-    public String addCar(@Valid @ModelAttribute Car car, BindingResult bindingResult){
-
+    public String addCar(@ModelAttribute("newCar") @Valid Car car, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "car/add";
+        }
         carService.createCar(car);
         return "car/addingSuccess";
     }
