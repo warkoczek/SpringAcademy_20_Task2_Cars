@@ -1,7 +1,6 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
 
 public enum Color {
