@@ -13,14 +13,12 @@ import java.util.stream.Collectors;
 @Repository
 public class CarRepositoryImpl implements CarRepository {
     private List<Car> cars;
-    private Long nextId;
 
     public CarRepositoryImpl() {
         cars = new ArrayList<>();
         cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
         cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
         cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
-        nextId = (long) (cars.size() + 1);
     }
 
     @Override
@@ -38,8 +36,7 @@ public class CarRepositoryImpl implements CarRepository {
     }
     @Override
     public boolean addCar(Car car) {
-        Optional<Car> presentCar = cars.stream().filter(car1 -> car1.getId().equals(car.getId())).findFirst();
-        if(presentCar.isPresent()){
+        if(car == null){
            return false;
         }
         return cars.add(car);
