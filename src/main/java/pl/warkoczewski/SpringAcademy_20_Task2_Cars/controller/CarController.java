@@ -5,12 +5,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +50,7 @@ public class CarController {
             modelAndView.setViewName("car/car");
             return modelAndView;
         }
-         modelAndView.setViewName("noCar");
+         modelAndView.setViewName("car/noCar");
         return modelAndView;
 
     }
@@ -70,13 +72,17 @@ public class CarController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     //add element
+    @GetMapping("/add")
+    public String getAddPage(Model model){
+        Car car = new Car();
+        model.addAttribute("newCar", car);
+        return "car/add";
+    }
     @PostMapping("/add")
-    public ResponseEntity addCar(@RequestBody Car car){
-        boolean added = carService.createCar(car);
-        if(added){
-            return new ResponseEntity(HttpStatus.CREATED);
-        }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    public String addCar(@Valid @ModelAttribute Car car, BindingResult bindingResult){
+
+        carService.createCar(car);
+        return "car/addingSuccess";
     }
     //update element
     @PutMapping("/update")
