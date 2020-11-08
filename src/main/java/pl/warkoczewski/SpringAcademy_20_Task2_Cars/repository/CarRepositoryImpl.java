@@ -20,9 +20,9 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     private void initialize() {
-        /*cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
+        cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
         cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
-        cars.add(new Car(3l, "Fiat", "Panda", Color.RED));*/
+        cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
     }
 
     @Override
