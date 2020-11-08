@@ -76,7 +76,6 @@ public class CarController {
     public ModelAndView getAddPage(ModelAndView modelAndView){
         modelAndView.setViewName("car/add");
         modelAndView.addObject("newCar", new Car());
-        modelAndView.addObject("updateCar", false);
         return modelAndView;
     }
     @PostMapping("/add")
@@ -90,19 +89,20 @@ public class CarController {
     //update element
     @GetMapping("/update/{id}")
     public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
-        modelAndView.setViewName("/car/add");
-        modelAndView.addObject("newCar", carService.showCarById(id).get());
-        modelAndView.addObject("update", true);
+        Car car = carService.showCarById(id).orElse(null);
+        modelAndView.setViewName("/car/update");
+        modelAndView.addObject("updatedCar", car);
         return modelAndView;
 
     }
-    @PutMapping("/update")
-    public ResponseEntity updateCar(@RequestBody Car car){
-       boolean updated = carService.updateCar(car);
-       if(updated) {
-           return new ResponseEntity<>(HttpStatus.OK);
+    @PostMapping("/update")
+    public String updateCar(@ModelAttribute Car car, BindingResult bindingResult){
+
+       if(bindingResult.hasErrors()) {
+           return "car/cars";
        }
-       return new ResponseEntity(HttpStatus.NOT_FOUND);
+       carService.updateCar(car);
+       return "car/addingSuccess";
     }
     // update some car fields
     @PatchMapping("/patchUpdate/{id}")
