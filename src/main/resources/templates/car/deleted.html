@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
-<h1>Deleted</h1>
+<h1 th:text="${message}"></h1>
 <footer th:insert="~{fragments/footer :: footerFragment}"></footer>
 </body>
 </html>

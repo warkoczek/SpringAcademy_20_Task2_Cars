@@ -38,11 +38,11 @@ public class CarController {
         return "car/cars";
     }
     //get elements by id
-    @GetMapping("/search")
-    public String getSearchPage(){
-        return "/car/search";
+    @GetMapping("/search/searchById")
+    public String getSearchByIdPage(){
+        return "/car/searchById";
     }
-    @PostMapping("/search")
+    @PostMapping("/search/SearchById")
     public ModelAndView showCarById(@RequestParam(value = "id") Long id, ModelAndView modelAndView){
         Optional<Car> car = carService.showCarById(id);
         if(car.isPresent()){
@@ -54,22 +54,18 @@ public class CarController {
         return modelAndView;
 
     }
-    @GetMapping("/search/{id}")
-    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
-        Optional<Car> car = carService.showCarById(id);
-        if(car.isPresent()){
-            return new ResponseEntity<>(car.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
     //get elements by color
-    @GetMapping("/color")
-    public ResponseEntity<List<Car>> getCarsByColor(@RequestParam(value = "color") Color color){
+    @GetMapping("/search/color")
+    public String getSearchByColorPage(){
+        return "/car/searchByColor";
+    }
+    @PostMapping("/search/color")
+    public String getCarsByColor(@RequestParam(value = "color") Color color, Model model){
         List<Car> cars = carService.showCarsByColor(color);
         if(!cars.isEmpty()){
-            return new ResponseEntity<>(cars, HttpStatus.OK);
+            model.addAttribute("cars", cars);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return "/car/cars";
     }
     //add element
     @GetMapping("/add")
@@ -105,9 +101,15 @@ public class CarController {
        return "car/addingSuccess";
     }
     //delete element
-    @DeleteMapping("/delete/{id}")
-    public String deleteCar(@PathVariable(value = "id") Long id){
-        carService.deleteCar(id);
-         return "/car/deleted";
+    @GetMapping("/delete/{id}")
+    public String deleteCar(@PathVariable(value = "id") Long id, Model model){
+        boolean deleted = carService.deleteCar(id);
+        if(deleted){
+            model.addAttribute("message", "Deleted successfully");
+            return "/car/deleted";
+        }
+        model.addAttribute("message", "Sorry, could not delete");
+        return "/car/deleted";
+
     }
 }
