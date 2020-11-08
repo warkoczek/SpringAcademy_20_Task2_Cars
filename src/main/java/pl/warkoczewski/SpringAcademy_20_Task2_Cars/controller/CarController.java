@@ -75,11 +75,11 @@ public class CarController {
     @GetMapping("/add")
     public ModelAndView getAddPage(ModelAndView modelAndView){
         modelAndView.setViewName("car/add");
-        modelAndView.addObject("newCar", new Car());
+        modelAndView.addObject("car", new Car());
         return modelAndView;
     }
     @PostMapping("/add")
-    public String addCar(@ModelAttribute("newCar") @Valid Car car, BindingResult bindingResult){
+    public String addCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "car/add";
         }
@@ -91,15 +91,15 @@ public class CarController {
     public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
         Car car = carService.showCarById(id).orElse(null);
         modelAndView.setViewName("/car/update");
-        modelAndView.addObject("updatedCar", car);
+        modelAndView.addObject("car", car);
         return modelAndView;
 
     }
     @PostMapping("/update")
-    public String updateCar(@ModelAttribute Car car, BindingResult bindingResult){
+    public String updateCar(@ModelAttribute("car")  Car car, BindingResult bindingResult){
 
        if(bindingResult.hasErrors()) {
-           return "car/cars";
+           return "car/add";
        }
        carService.updateCar(car);
        return "car/addingSuccess";

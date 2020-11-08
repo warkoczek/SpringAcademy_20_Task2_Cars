@@ -7,10 +7,10 @@
 </head>
 <body>
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
-<h1>Add a Car</h1>
+<h1>Update Car</h1>
 <div class="container">
     <!--/*@thymesVar id="updatedCar" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car"*/-->
-    <form th:action="@{/cars/update}" method="post" th:object="${updatedCar}">
+    <form th:action="@{/cars/update}" method="post" th:object="${car}">
         <div class="input-group">
             <label class="custom-control-label" for="id">Id</label>
             <input id="id" type="text" class="form-control" th:field="*{id}" required autofocus="autofocus"/><br>
@@ -32,7 +32,7 @@
             <span th:if="${#fields.hasErrors()}" th:errors="*{color}">Not valid id</span>
         </div>
         <div class="form-group">
-            <button class="btn-btn-success">Add</button>
+            <button class="btn-btn-success">Update</button>
         </div>
     </form>
 </div>

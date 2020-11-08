@@ -56,7 +56,6 @@ public class CarRepositoryImpl implements CarRepository {
             carToUpdate.get().setMark(car.getMark());
             carToUpdate.get().setModel(car.getModel());
             carToUpdate.get().setColor(car.getColor());
-            cars.add(carToUpdate.get());
             return true;
         }
         return false;
