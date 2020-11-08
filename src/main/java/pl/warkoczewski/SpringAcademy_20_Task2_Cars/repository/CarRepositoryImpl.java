@@ -13,15 +13,17 @@ import java.util.stream.Collectors;
 @Repository
 public class CarRepositoryImpl implements CarRepository {
     private List<Car> cars;
-    private Long nextId;
 
     public CarRepositoryImpl() {
         cars = new ArrayList<>();
+        initialize();
+    }
+
+    private void initialize() {
         cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
         cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
         cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
         cars.add(new Car(4l, "Volvo", "S40", Color.VIOLET));
-        nextId = (long) (cars.size() + 1);
     }
 
     @Override
