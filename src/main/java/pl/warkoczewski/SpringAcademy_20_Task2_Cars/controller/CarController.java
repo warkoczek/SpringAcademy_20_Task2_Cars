@@ -73,10 +73,11 @@ public class CarController {
     }
     //add element
     @GetMapping("/add")
-    public String getAddPage(Model model){
-        Car car = new Car();
-        model.addAttribute("newCar", car);
-        return "car/add";
+    public ModelAndView getAddPage(ModelAndView modelAndView){
+        modelAndView.setViewName("car/add");
+        modelAndView.addObject("newCar", new Car());
+        modelAndView.addObject("updateCar", false);
+        return modelAndView;
     }
     @PostMapping("/add")
     public String addCar(@ModelAttribute("newCar") @Valid Car car, BindingResult bindingResult){
@@ -87,8 +88,16 @@ public class CarController {
         return "car/addingSuccess";
     }
     //update element
+    @GetMapping("/update/{id}")
+    public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
+        modelAndView.setViewName("/car/add");
+        modelAndView.addObject("newCar", carService.showCarById(id).get());
+        modelAndView.addObject("update", true);
+        return modelAndView;
+
+    }
     @PutMapping("/update")
-    public ResponseEntity modifyCar(@RequestBody Car car){
+    public ResponseEntity updateCar(@RequestBody Car car){
        boolean updated = carService.updateCar(car);
        if(updated) {
            return new ResponseEntity<>(HttpStatus.OK);
