@@ -57,11 +57,12 @@ public class CarController {
     }
     //get elements by color
     @GetMapping("/search/searchByColor")
-    public String getSearchByColorPage(){
+    public String getSearchByColorPage(Model model){
+        model.addAttribute("colorTypes", Color.values());
         return "/car/searchByColor";
     }
     @PostMapping("/search/searchByColor")
-    public String getCarsByColor(@RequestParam(value = "color") Color color, Model model){
+    public String getCarsByColor(@ModelAttribute(value = "color") Color color, Model model){
         List<Car> cars = carService.showCarsByColor(color);
         if(!cars.isEmpty()){
             model.addAttribute("cars", cars);
