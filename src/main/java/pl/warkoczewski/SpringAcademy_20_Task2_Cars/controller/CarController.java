@@ -86,7 +86,7 @@ public class CarController {
         carService.createCar(car);
         return "car/addingSuccess";
     }
-    //update element
+    //update element and patchUpdate
     @GetMapping("/update/{id}")
     public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
         Car car = carService.showCarById(id).orElse(null);
@@ -104,25 +104,10 @@ public class CarController {
        carService.updateCar(car);
        return "car/addingSuccess";
     }
-    // update some car fields
-    @PatchMapping("/patchUpdate/{id}")
-    public ResponseEntity<Car> modifyCarPartially(@PathVariable(value = "id") Long id
-            , @RequestParam(value = "mark", required = false) String mark
-            , @RequestParam(value = "model", required = false) String model
-            , @RequestParam(value = "color", required = false) String color){
-        Optional<Car> updatedCar = carService.patchUpdate(id, mark, model, color);
-        if(updatedCar.isPresent()){
-            return new ResponseEntity<>(updatedCar.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
     //delete element
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteCar(@PathVariable(value = "id") Long id){
-        boolean carDeleted = carService.deleteCar(id);
-        if(carDeleted){
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    public String deleteCar(@PathVariable(value = "id") Long id){
+        carService.deleteCar(id);
+         return "/car/deleted";
     }
 }
