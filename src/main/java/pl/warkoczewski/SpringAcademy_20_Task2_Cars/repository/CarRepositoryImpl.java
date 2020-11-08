@@ -16,9 +16,13 @@ public class CarRepositoryImpl implements CarRepository {
 
     public CarRepositoryImpl() {
         cars = new ArrayList<>();
-        cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
+        initialize();
+    }
+
+    private void initialize() {
+        /*cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
         cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
-        cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
+        cars.add(new Car(3l, "Fiat", "Panda", Color.RED));*/
     }
 
     @Override
@@ -36,21 +40,23 @@ public class CarRepositoryImpl implements CarRepository {
     }
     @Override
     public boolean addCar(Car car) {
-        if(car == null){
-           return false;
+        Optional<Car> first = cars.stream().filter(car1 -> car.getId().equals(car1.getId())).findFirst();
+        if(first.isPresent()){
+            return false;
         }
         return cars.add(car);
+
     }
 
     @Override
     public boolean updateCar(Car car) {
-        Car carToUpdate = cars.stream().filter(car1 -> car1.getId().equals(car.getId())).findFirst().orElse(null);
-        if(carToUpdate != null){
-            carToUpdate.setId(car.getId());
-            carToUpdate.setMark(car.getMark());
-            carToUpdate.setModel(car.getModel());
-            carToUpdate.setColor(car.getColor());
-            cars.add(carToUpdate);
+        Optional<Car> carToUpdate = cars.stream().filter(car1 -> car1.getId().equals(car.getId())).findFirst();
+        if(carToUpdate.isPresent()){
+            carToUpdate.get().setId(car.getId());
+            carToUpdate.get().setMark(car.getMark());
+            carToUpdate.get().setModel(car.getModel());
+            carToUpdate.get().setColor(car.getColor());
+            cars.add(carToUpdate.get());
             return true;
         }
         return false;

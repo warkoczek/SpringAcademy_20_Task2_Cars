@@ -27,7 +27,7 @@ public class CarController {
         if(!cars.isEmpty()){
             return new ResponseEntity<>(cars, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
     //get elements by id
     @GetMapping("/car/{id}")
