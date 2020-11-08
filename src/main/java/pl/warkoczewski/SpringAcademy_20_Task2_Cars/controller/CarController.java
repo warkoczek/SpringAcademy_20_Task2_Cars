@@ -42,24 +42,22 @@ public class CarController {
     public String getSearchByIdPage(){
         return "/car/searchById";
     }
-    @PostMapping("/search/SearchById")
-    public ModelAndView showCarById(@RequestParam(value = "id") Long id, ModelAndView modelAndView){
+    @PostMapping("/search/searchById")
+    public String showCarById(@RequestParam(value = "id") Long id, Model model){
         Optional<Car> car = carService.showCarById(id);
         if(car.isPresent()){
-            modelAndView.addObject("car", car.get());
-            modelAndView.setViewName("car/car");
-            return modelAndView;
+            model.addAttribute("car", car.get());
+            return "/car/car";
         }
-         modelAndView.setViewName("car/noCar");
-        return modelAndView;
+        return "car/noCar";
 
     }
     //get elements by color
-    @GetMapping("/search/color")
+    @GetMapping("/search/searchByColor")
     public String getSearchByColorPage(){
         return "/car/searchByColor";
     }
-    @PostMapping("/search/color")
+    @PostMapping("/search/searchByColor")
     public String getCarsByColor(@RequestParam(value = "color") Color color, Model model){
         List<Car> cars = carService.showCarsByColor(color);
         if(!cars.isEmpty()){
