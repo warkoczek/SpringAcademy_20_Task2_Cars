@@ -13,6 +13,7 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,9 +46,11 @@ public class CarController {
     @PostMapping("/search/searchById")
     public String showCarById(@RequestParam(value = "id") Long id, Model model){
         Optional<Car> car = carService.showCarById(id);
+        List<Car> cars = new ArrayList<>();
         if(car.isPresent()){
-            model.addAttribute("car", car.get());
-            return "/car/car";
+            cars.add(car.get());
+            model.addAttribute("cars", cars);
+            return "/car/cars";
         }
         return "car/noCar";
 
@@ -62,8 +65,9 @@ public class CarController {
         List<Car> cars = carService.showCarsByColor(color);
         if(!cars.isEmpty()){
             model.addAttribute("cars", cars);
+            return "/car/cars";
         }
-        return "/car/cars";
+        return "/car/noCar";
     }
     //add element
     @GetMapping("/add")
