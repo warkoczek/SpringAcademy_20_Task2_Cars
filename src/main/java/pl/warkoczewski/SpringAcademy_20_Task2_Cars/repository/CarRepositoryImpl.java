@@ -50,10 +50,13 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean updateCar(Car car) {
-        Optional<Car> first = cars.stream().filter(car1 -> car1.getId().equals(car.getId())).findFirst();
-        if(first.isPresent()){
-            cars.remove(first.get());
-            cars.add(car);
+        Optional<Car> carToUpdate = cars.stream().filter(car1 -> car1.getId().equals(car.getId())).findFirst();
+        if(carToUpdate.isPresent()){
+            carToUpdate.get().setId(car.getId());
+            carToUpdate.get().setMark(car.getMark());
+            carToUpdate.get().setModel(car.getModel());
+            carToUpdate.get().setColor(car.getColor());
+            cars.add(carToUpdate.get());
             return true;
         }
         return false;
