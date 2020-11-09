@@ -12,7 +12,7 @@
     <form th:action="@{/cars/add}" method="post" th:object="${car}">
         <div class="input-group">
             <label class="custom-control-label" for="id">Id</label>
-            <input id="id" type="text" class="form-control" th:field="*{id}" required autofocus="autofocus"/><br>
+            <input id="id" type="number" class="form-control" name="id" th:value="${nextId}"/><br>
             <span th:if="${#fields.hasErrors()}" th:errors="*{id}">Not valid id</span>
         </div>
         <div class="input-group">

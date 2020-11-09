@@ -8,10 +8,11 @@ import java.util.Optional;
 
 public interface CarService {
     List<Car> showCars();
+    Long generateNextId();
     Optional<Car> showCarById(Long id);
     List<Car> showCarsByColor(Color color);
     boolean createCar(Car car);
-    boolean updateCar(Car car);
+    Car patchUpdateCar(Car car);
     Optional<Car> patchUpdate(Long id, String mark, String model, String color);
     boolean deleteCar(Long id);
 }

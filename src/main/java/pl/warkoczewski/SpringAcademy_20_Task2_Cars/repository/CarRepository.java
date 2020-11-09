@@ -11,7 +11,7 @@ public interface CarRepository {
     Optional<Car> findCarById(Long id);
     List<Car> findCarsByColor(Color color);
     boolean addCar(Car car);
-    boolean updateCar(Car car);
+    Car patchUpdateCar(Car car);
     Optional<Car> patchUpdate(Long id, String mark, String model, String color);
 
     boolean removeCar(Long id);

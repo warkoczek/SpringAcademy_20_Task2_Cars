@@ -21,6 +21,11 @@ public class CarServiceImpl implements CarService {
         return carRepository.findAll();
     }
 
+    @Override
+    public Long generateNextId() {
+        return showCars().stream().map(Car::getId).max(Long::compareTo).orElse(1L);
+    }
+
     public Optional<Car> showCarById(Long id) {
         return carRepository.findCarById(id);
     }
@@ -35,8 +40,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean updateCar(Car car) {
-        return carRepository.updateCar(car);
+    public Car patchUpdateCar(Car car) {
+        return carRepository.patchUpdateCar(car);
     }
 
     @Override

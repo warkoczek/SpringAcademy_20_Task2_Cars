@@ -1,8 +1,5 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,8 +70,10 @@ public class CarController {
     //add element
     @GetMapping("/add")
     public ModelAndView getAddPage(ModelAndView modelAndView){
+        Long nextId = carService.generateNextId() + 1;
         modelAndView.setViewName("car/add");
         modelAndView.addObject("car", new Car());
+        modelAndView.addObject("nextId", nextId);
         return modelAndView;
     }
     @PostMapping("/add")
@@ -87,20 +86,20 @@ public class CarController {
     }
     //update element and patchUpdate
     @GetMapping("/update/{id}")
-    public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
+    public ModelAndView getPatchUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
         Car car = carService.showCarById(id).orElse(null);
-        modelAndView.setViewName("/car/update");
+        modelAndView.setViewName("/car/patchUpdate");
         modelAndView.addObject("car", car);
         return modelAndView;
 
     }
     @PostMapping("/update")
-    public String updateCar(@ModelAttribute("car")  Car car, BindingResult bindingResult){
+    public String patchUpdateCar(@ModelAttribute("car") Car car, BindingResult bindingResult){
 
        if(bindingResult.hasErrors()) {
            return "car/add";
        }
-       carService.updateCar(car);
+       carService.patchUpdateCar(car);
        return "car/addingSuccess";
     }
     //delete element
