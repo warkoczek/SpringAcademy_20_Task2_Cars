@@ -13,6 +13,7 @@ public interface CarService {
     List<Car> showCarsByColor(Color color);
     boolean createCar(Car car);
     Car patchUpdateCar(Car car);
+    void updateCar(Car car);
     Optional<Car> patchUpdate(Long id, String mark, String model, String color);
     boolean deleteCar(Long id);
 }

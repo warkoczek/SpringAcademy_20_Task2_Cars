@@ -30,7 +30,7 @@ public class CarRepositoryImpl implements CarRepository {
     public List<Car> findAll() {
         return cars;
     }
-
+    @Override
     public Optional<Car> findCarById(Long id) {
         return cars.stream().filter(car -> car.getId() == id).findFirst();
     }
@@ -56,6 +56,13 @@ public class CarRepositoryImpl implements CarRepository {
             carToUpdate.setModel(car.getModel());
             carToUpdate.setColor(car.getColor());
         return carToUpdate;
+    }
+
+    @Override
+    public void updateCar(Car car) {
+        Car carToUpdate = cars.stream().filter(car1 -> car.getId().equals(car1.getId())).findFirst().orElseThrow();
+        cars.remove(carToUpdate);
+        cars.add(car);
     }
 
     @Override

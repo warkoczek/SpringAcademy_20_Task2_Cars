@@ -3,17 +3,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{fragments/head :: headFragment}">
     <meta charset="UTF-8">
-    <title>Patch Update Car</title>
+    <title>Update Car</title>
 </head>
 <body>
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
-<h1>Patch Update Car</h1>
+<h1>Update Car</h1>
 <div class="container">
     <!--/*@thymesVar id="updatedCar" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car"*/-->
-    <form th:action="@{/cars/patchUpdate}" method="post" th:object="${car}">
+    <form th:action="@{/cars/update}" method="post" th:object="${car}">
         <div class="input-group">
             <label class="custom-control-label" for="id">Id</label>
-            <input id="id" type="text" class="form-control" th:field="*{id}" readonly="readonly"/><br>
+            <input id="id" type="text" class="form-control" th:field="*{id}"/><br>
             <span th:if="${#fields.hasErrors()}" th:errors="*{id}">Not valid id</span>
         </div>
         <div class="input-group">

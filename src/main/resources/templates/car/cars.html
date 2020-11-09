@@ -18,6 +18,8 @@
             <th>Model</th>
             <th>Color</th>
             <th>Action</th>
+            <th>Action</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +28,9 @@
             <td th:text="${car.mark}"></td>
             <td th:text="${car.model}"></td>
             <td th:text="${car.color}"></td>
+            <td>
+                <a th:href="@{cars/patchUpdate/{id}(id=${car.id})}" class="btn-btn-primary">Patch</a>
+            </td>
             <td>
                 <a th:href="@{cars/update/{id}(id=${car.id})}" class="btn-btn-primary">Update</a>
             </td>

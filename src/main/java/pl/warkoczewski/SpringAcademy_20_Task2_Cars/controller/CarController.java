@@ -84,8 +84,8 @@ public class CarController {
         carService.createCar(car);
         return "car/addingSuccess";
     }
-    //update element and patchUpdate
-    @GetMapping("/update/{id}")
+    //patchUpdate
+    @GetMapping("/patchUpdate/{id}")
     public ModelAndView getPatchUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
         Car car = carService.showCarById(id).orElse(null);
         modelAndView.setViewName("/car/patchUpdate");
@@ -93,14 +93,30 @@ public class CarController {
         return modelAndView;
 
     }
-    @PostMapping("/update")
+    @PostMapping("/patchUpdate")
     public String patchUpdateCar(@ModelAttribute("car") Car car, BindingResult bindingResult){
 
        if(bindingResult.hasErrors()) {
-           return "car/add";
+           return "car/cars";
        }
        carService.patchUpdateCar(car);
        return "car/addingSuccess";
+    }
+    //updateCar
+    @GetMapping("/update{id}")
+    public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView) {
+        Car car = carService.showCarById(id).orElseThrow();
+        modelAndView.setViewName("/car/update");
+        modelAndView.addObject("car", car);
+        return modelAndView;
+    }
+    @PostMapping("/update")
+    public String updateCar(@ModelAttribute Car car, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "car/cars";
+        }
+        carService.updateCar(car);
+        return "car/addingSuccess";
     }
     //delete element
     @GetMapping("/delete/{id}")
