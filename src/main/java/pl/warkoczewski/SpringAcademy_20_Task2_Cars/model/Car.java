@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Car {
     @Range(min = 1, max = 10000, message = "Number out of range")
-    @NextId(message = "Id already exists")
+    @NextId(message = "Not a next id! Do not change the default one, please!")
     private Long id;
     @NotBlank
     private String mark;

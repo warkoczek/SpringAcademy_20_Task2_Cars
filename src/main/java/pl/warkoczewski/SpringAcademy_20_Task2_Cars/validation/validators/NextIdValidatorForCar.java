@@ -13,7 +13,7 @@ import javax.validation.ConstraintValidatorContext;
 @RequiredArgsConstructor
 @Scope("prototype")
 @Slf4j
-public class UniqueIdValidatorForCar implements ConstraintValidator<NextId, Long> {
+public class NextIdValidatorForCar implements ConstraintValidator<NextId, Long> {
     private final ValidationServiceImpl validationService;
     @Override
     public void initialize(NextId constraintAnnotation) {
