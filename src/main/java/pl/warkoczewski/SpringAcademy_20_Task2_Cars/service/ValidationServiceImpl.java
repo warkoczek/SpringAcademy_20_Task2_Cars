@@ -5,13 +5,15 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.CarRepositoryImpl;
 @Service
 public class ValidationServiceImpl implements ValidationService {
     private final CarRepositoryImpl carRepository;
+    private final CarServiceImpl carService;
 
-    public ValidationServiceImpl(CarRepositoryImpl carRepository) {
+    public ValidationServiceImpl(CarRepositoryImpl carRepository, CarServiceImpl carService) {
         this.carRepository = carRepository;
+        this.carService = carService;
     }
-
     @Override
-    public boolean isIdUnique(Long id) {
-        return carRepository.findAll().stream().noneMatch(car -> car.getId().equals(id));
+    public boolean isIdNext(Long id) {
+        Long nextId = carService.generateNextId();
+        return id.equals(nextId);
     }
 }

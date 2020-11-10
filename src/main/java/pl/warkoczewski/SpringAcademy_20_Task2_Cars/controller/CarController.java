@@ -109,10 +109,10 @@ public class CarController {
     public String deleteCar(@PathVariable(value = "id") Long id, Model model){
         boolean deleted = carService.deleteCar(id);
         if(deleted){
-            model.addAttribute("message", "Deleted successfully");
+            model.addAttribute("message", "Deleted successfully!");
             return "/car/deleted";
         }
-        model.addAttribute("message", "Sorry, could not delete");
+        model.addAttribute("message", "I am sorry, could not delete");
         return "/car/deleted";
 
     }

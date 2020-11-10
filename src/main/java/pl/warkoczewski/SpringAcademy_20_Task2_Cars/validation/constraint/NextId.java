@@ -1,6 +1,6 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.validation.constraint;
 
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.validation.validators.UniqueIdentityValidatorForCar;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.validation.validators.UniqueIdValidatorForCar;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,10 +9,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = UniqueIdentityValidatorForCar.class)
+@Constraint(validatedBy = UniqueIdValidatorForCar.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueIdentity {
+public @interface NextId {
     String message() default "";
 
     Class<?>[] groups() default {};

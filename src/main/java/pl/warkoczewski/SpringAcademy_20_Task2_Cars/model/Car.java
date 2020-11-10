@@ -2,7 +2,7 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.validation.constraint.UniqueIdentity;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.validation.constraint.NextId;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Car {
     @Range(min = 1, max = 10000, message = "Number out of range")
-    @UniqueIdentity(message = "Id already exists")
+    @NextId(message = "Id already exists")
     private Long id;
     @NotBlank
     private String mark;
