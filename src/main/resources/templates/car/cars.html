@@ -29,13 +29,10 @@
             <td th:text="${car.model}"></td>
             <td th:text="${car.color}"></td>
             <td>
-                <a th:href="@{cars/patchUpdate/{id}(id=${car.id})}" class="btn-btn-primary">Patch</a>
+                <a style="color: green" th:href="@{cars/update/{id}(id=${car.id})}" class="btn-btn-primary">Update</a>
             </td>
             <td>
-                <a th:href="@{cars/update/{id}(id=${car.id})}" class="btn-btn-primary">Update</a>
-            </td>
-            <td>
-                <a th:href="@{cars/delete/{id}(id=${car.id})}" class="btn-btn-primary">Delete</a>
+                <a style="color: green" th:href="@{cars/delete/{id}(id=${car.id})}" class="btn-btn-primary">Delete</a>
             </td>
 
         </tr>

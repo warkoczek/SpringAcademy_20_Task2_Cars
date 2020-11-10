@@ -71,9 +71,11 @@ public class CarController {
     @GetMapping("/add")
     public ModelAndView getAddPage(ModelAndView modelAndView){
         Long nextId = carService.generateNextId() + 1;
+        Color[] colors = Color.values();
         modelAndView.setViewName("car/add");
         modelAndView.addObject("car", new Car());
         modelAndView.addObject("nextId", nextId);
+        modelAndView.addObject("colors", colors);
         return modelAndView;
     }
     @PostMapping("/add")
@@ -84,39 +86,23 @@ public class CarController {
         carService.createCar(car);
         return "car/addingSuccess";
     }
-    //patchUpdate
-    @GetMapping("/patchUpdate/{id}")
-    public ModelAndView getPatchUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
-        Car car = carService.showCarById(id).orElse(null);
-        modelAndView.setViewName("/car/patchUpdate");
+    //updateCar and patchUpdate
+    @GetMapping("/update/{id}")
+    public ModelAndView geUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
+        Car car = carService.showCarById(id).orElseThrow();
+        modelAndView.setViewName("/car/update");
         modelAndView.addObject("car", car);
         return modelAndView;
 
     }
-    @PostMapping("/patchUpdate")
-    public String patchUpdateCar(@ModelAttribute("car") Car car, BindingResult bindingResult){
+    @PostMapping("/update")
+    public String updateCar(@ModelAttribute("car") Car car, BindingResult bindingResult){
 
        if(bindingResult.hasErrors()) {
            return "car/cars";
        }
        carService.patchUpdateCar(car);
        return "car/addingSuccess";
-    }
-    //updateCar
-    @GetMapping("/update{id}")
-    public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView) {
-        Car car = carService.showCarById(id).orElseThrow();
-        modelAndView.setViewName("/car/update");
-        modelAndView.addObject("car", car);
-        return modelAndView;
-    }
-    @PostMapping("/update")
-    public String updateCar(@ModelAttribute Car car, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return "car/cars";
-        }
-        carService.updateCar(car);
-        return "car/addingSuccess";
     }
     //delete element
     @GetMapping("/delete/{id}")

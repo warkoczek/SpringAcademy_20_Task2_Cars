@@ -13,7 +13,7 @@
     <form th:action="@{/cars/update}" method="post" th:object="${car}">
         <div class="input-group">
             <label class="custom-control-label" for="id">Id</label>
-            <input id="id" type="text" class="form-control" th:field="*{id}"/><br>
+            <input id="id" type="text" class="form-control" th:field="*{id}" readonly="readonly"/><br>
             <span th:if="${#fields.hasErrors()}" th:errors="*{id}">Not valid id</span>
         </div>
         <div class="input-group">
