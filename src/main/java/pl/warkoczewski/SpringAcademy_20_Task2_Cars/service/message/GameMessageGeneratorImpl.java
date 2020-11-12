@@ -4,16 +4,16 @@ import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameImpl;
 
 @Service
-public class MessageGeneratorImpl implements MessageGenerator {
+public class GameMessageGeneratorImpl implements GameMessageGenerator {
     private final GameImpl game;
 
-    public MessageGeneratorImpl(GameImpl game) {
+    public GameMessageGeneratorImpl(GameImpl game) {
         this.game = game;
     }
 
     @Override
-    public String getMainMessage() {
-        return "Your random pick is: " + game.getRandomExchange().getExchangeCurrency();
+    public String randomPickMessage() {
+        return "Your random pick is: " + game.getRandomExchange().getExchangeCurrency() + "\n" + "Guess the exchange rate: ";
     }
 
     @Override
