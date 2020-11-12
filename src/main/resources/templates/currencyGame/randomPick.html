@@ -10,7 +10,7 @@
     <form th:action="@{/game/play}" method="post">
         <p th:text="'Your random pick currency is:'"></p>
         <div class="input-group">
-            <input type="text" class="form-control" name="randomPick" th:value="${currency}"><br>
+            <input type="text" class="form-control" name="currency" th:value="${currency}"><br>
             <p th:text="'Your exchange rate guess is:'"></p>
             <input type="text" class="form-control" name="guess" placeholder="Guess exchange rate">
             <div class="input-group-btn">

@@ -1,15 +1,20 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.converter;
 
+import org.apache.tomcat.util.collections.ManagedConcurrentWeakHashMap;
 import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.fetcher.DataFetcherImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.CurrencyData;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Rates;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 @Service
 public class DataConverterImpl implements DataConverter {
     private final DataFetcherImpl fetchService;
@@ -24,13 +29,17 @@ public class DataConverterImpl implements DataConverter {
         return createExchangesList(currencyData, currencyMap);
 
     }
-
     private List<Exchange> createExchangesList(CurrencyData currencyData, Map<String, Double> currencyMap) {
         List<Exchange> exchanges = new ArrayList<>();
+
         for(Map.Entry<String, Double> entry : currencyMap.entrySet()){
-            exchanges.add(new Exchange(currencyData.getBase(), entry.getKey(), entry.getValue(), currencyData.getDate()));
+            exchanges.add(new Exchange(currencyData.getBase(), entry.getKey(), roundRate(entry.getValue()), currencyData.getDate()));
         }
         return exchanges;
+    }
+    private Double roundRate(Double toRound) {
+        return BigDecimal.valueOf(toRound)
+                .setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
     private Map<String, Double> convertToMap(CurrencyData data){
         Map<String, Double> map = new HashMap<>();

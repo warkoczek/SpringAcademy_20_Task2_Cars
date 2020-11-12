@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameServiceImpl;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.message.GameMessageGeneratorImpl;
+
 
 @Controller
 @RequestMapping("/game")
@@ -27,7 +27,10 @@ public class GameController {
     @PostMapping("/play")
     public String getGuessRateForm(@RequestParam(name = "currency") String currency, @RequestParam(name = "guess") Double guess){
         boolean gameWon = gameService.isGameWon(currency, guess);
-        return "/currencyGame/randomPick";
+        if(gameWon){
+            return "/currencyGame/congrats";
+        }
+        return "/currencyGame/lost";
     }
 
 }
