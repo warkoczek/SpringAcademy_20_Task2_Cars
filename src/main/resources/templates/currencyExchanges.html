@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CurrencyRates</title>
+</head>
+<body>
+<!--table-->
+<h1 th:text="${base}"></h1>
+<div class="container" th:object="${exchanges}">
+    <div th:if="${not #lists.isEmpty(exchanges)}">
+        <table class="table table-striped">
+            <tr>
+                <th>Currency</th>
+                <th>Rate</th>
+
+            </tr>
+            <tr th:each="exchange : ${exchanges}">
+                <td th:text="${exchange.getExchangeCurrency()}"></td>
+                <td th:text="${exchange.exchangeRate}"></td>
+
+
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
