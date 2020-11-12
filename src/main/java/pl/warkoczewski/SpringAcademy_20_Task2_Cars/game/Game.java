@@ -1,11 +1,10 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.game;
 
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 
 public interface Game {
     Exchange getRandomExchange();
-    Double getGuess();
     boolean isValidInputCurrency();
-    boolean isGameWon();
-    boolean isGameLost();
+    boolean isGameWon(String currency, Double guess);
+
 }

@@ -1,19 +1,19 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.message;
 
 import org.springframework.stereotype.Service;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameImpl;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameServiceImpl;
 
 @Service
 public class GameMessageGeneratorImpl implements GameMessageGenerator {
-    private final GameImpl game;
+    private final GameServiceImpl gameService;
 
-    public GameMessageGeneratorImpl(GameImpl game) {
-        this.game = game;
+    public GameMessageGeneratorImpl(GameServiceImpl gameService) {
+        this.gameService = gameService;
     }
 
     @Override
     public String randomPickMessage() {
-        return "Your random pick is: " + game.getRandomExchange().getExchangeCurrency() + "\n" + "Guess the exchange rate: ";
+        return "Your random pick is: Guess the exchange rate: ";
     }
 
     @Override

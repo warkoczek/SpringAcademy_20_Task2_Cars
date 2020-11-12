@@ -2,20 +2,32 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameServiceImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.message.GameMessageGeneratorImpl;
 
 @Controller
+@RequestMapping("/game")
 public class GameController {
-    private final GameMessageGeneratorImpl messageGenerator;
+    private final GameServiceImpl gameService;
 
-    public GameController(GameMessageGeneratorImpl messageGenerator) {
-        this.messageGenerator = messageGenerator;
+    public GameController(GameServiceImpl gameService) {
+        this.gameService = gameService;
     }
-    @GetMapping("/game/randomPick")
+    @GetMapping()
+    public String gamePage(){
+        return "/currencyGame/game";
+    }
+    @GetMapping("/play")
     public String getRandomPick(Model model){
-        String randomPickMessage = messageGenerator.randomPickMessage();
-        model.addAttribute("randomPick", randomPickMessage);
+        String randomPickCurrency = gameService.randomExchangeCurrency();
+        model.addAttribute("currency", randomPickCurrency);
         return "/currencyGame/randomPick";
     }
+    @PostMapping("/play")
+    public String getGuessRateForm(@RequestParam(name = "currency") String currency, @RequestParam(name = "guess") Double guess){
+        boolean gameWon = gameService.isGameWon(currency, guess);
+        return "/currencyGame/randomPick";
+    }
+
 }

@@ -1,4 +1,4 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.game;
 
 import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
@@ -23,22 +23,14 @@ public class GameImpl implements Game {
     }
 
     @Override
-    public Double getGuess() {
-        return null;
-    }
-
-    @Override
     public boolean isValidInputCurrency() {
         return false;
     }
 
     @Override
-    public boolean isGameWon() {
-        return false;
-    }
-
-    @Override
-    public boolean isGameLost() {
-        return false;
+    public boolean isGameWon(String currency, Double guess) {
+        return exchangeService.showExchanges().stream().anyMatch(exchange
+                -> exchange.getExchangeCurrency().equalsIgnoreCase(currency)
+                & exchange.getExchangeRate().equals(guess));
     }
 }
