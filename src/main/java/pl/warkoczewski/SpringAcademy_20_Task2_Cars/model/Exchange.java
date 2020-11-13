@@ -1,6 +1,8 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 import org.springframework.stereotype.Component;
 
+
+
 @Component
 public class Exchange {
     private String baseCurrency;
