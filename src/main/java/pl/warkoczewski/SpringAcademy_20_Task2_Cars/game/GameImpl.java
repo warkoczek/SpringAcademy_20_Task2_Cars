@@ -21,16 +21,9 @@ public class GameImpl implements Game {
         return exchanges.get(random.nextInt(exchanges.size()));
 
     }
-
     @Override
-    public boolean isValidInputCurrency() {
-        return false;
-    }
-
-    @Override
-    public boolean isGameWon(String currency, Double guess) {
-        return exchangeService.showExchanges().stream().anyMatch(exchange
-                -> exchange.getExchangeCurrency().equalsIgnoreCase(currency)
-                & exchange.getExchangeRate().equals(guess));
+    public boolean isGameWon(Exchange exchange) {
+        return exchangeService.showExchanges().stream().anyMatch(exchange1
+                -> exchange1.getExchangeRate().equals(exchange.getExchangeRate()));
     }
 }

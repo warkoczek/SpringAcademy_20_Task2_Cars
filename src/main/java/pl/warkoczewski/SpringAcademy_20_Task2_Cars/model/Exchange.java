@@ -1,11 +1,13 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Exchange {
     private String baseCurrency;
     private String exchangeCurrency;
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private Double exchangeRate;
     private String date;
 

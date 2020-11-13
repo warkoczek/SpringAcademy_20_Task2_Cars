@@ -3,7 +3,10 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameServiceImpl;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -19,14 +22,14 @@ public class GameController {
         return "/currencyGame/game";
     }
     @GetMapping("/play")
-    public String getRandomPick(Model model){
-        String randomPickCurrency = gameService.randomExchangeCurrency();
-        model.addAttribute("currency", randomPickCurrency);
-        return "/currencyGame/randomPick";
+    public String play(Model model){
+        Exchange exchange = gameService.randomExchange();
+        model.addAttribute("exchange", exchange);
+        return "currencyGame/play";
     }
     @PostMapping("/play")
-    public String getGuessRateForm(@RequestParam(name = "currency") String currency, @RequestParam(name = "guess") Double guess){
-        boolean gameWon = gameService.isGameWon(currency, guess);
+    public String getGuessRateForm(@ModelAttribute(name = "exchange") @Valid Exchange exchange){
+        boolean gameWon = gameService.isGameWon(exchange);
         if(gameWon){
             return "/currencyGame/congrats";
         }

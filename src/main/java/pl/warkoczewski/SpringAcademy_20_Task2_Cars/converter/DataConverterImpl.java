@@ -1,6 +1,5 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.converter;
 
-import org.apache.tomcat.util.collections.ManagedConcurrentWeakHashMap;
 import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.fetcher.DataFetcherImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class DataConverterImpl implements DataConverter {
@@ -26,12 +24,11 @@ public class DataConverterImpl implements DataConverter {
     public List<Exchange> getExchanges() {
         CurrencyData currencyData = fetchService.fetchData();
         Map<String, Double> currencyMap = convertToMap(currencyData);
-        return createExchangesList(currencyData, currencyMap);
+        return createList(currencyData, currencyMap);
 
     }
-    private List<Exchange> createExchangesList(CurrencyData currencyData, Map<String, Double> currencyMap) {
+    private List<Exchange> createList(CurrencyData currencyData, Map<String, Double> currencyMap) {
         List<Exchange> exchanges = new ArrayList<>();
-
         for(Map.Entry<String, Double> entry : currencyMap.entrySet()){
             exchanges.add(new Exchange(currencyData.getBase(), entry.getKey(), roundRate(entry.getValue()), currencyData.getDate()));
         }

@@ -12,12 +12,12 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public String randomExchangeCurrency() {
-        return game.getRandomExchange().getExchangeCurrency();
+    public Exchange randomExchange() {
+        return game.getRandomExchange();
     }
 
     @Override
-    public boolean isGameWon(String currency, Double guess) {
-        return game.isGameWon(currency, guess);
+    public boolean isGameWon(Exchange exchange) {
+        return game.isGameWon(exchange);
     }
 }

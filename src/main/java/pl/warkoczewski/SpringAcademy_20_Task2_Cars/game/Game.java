@@ -4,7 +4,6 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 
 public interface Game {
     Exchange getRandomExchange();
-    boolean isValidInputCurrency();
-    boolean isGameWon(String currency, Double guess);
+    boolean isGameWon(Exchange exchange);
 
 }
