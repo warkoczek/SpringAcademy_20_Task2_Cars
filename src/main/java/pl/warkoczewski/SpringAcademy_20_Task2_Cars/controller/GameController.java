@@ -28,7 +28,7 @@ public class GameController {
         return "currencyGame/play";
     }
     @PostMapping("/play")
-    public String getGuessRateForm(@ModelAttribute(name = "exchange") @Valid Exchange exchange){
+    public String getGuessRateForm(@ModelAttribute(name = "exchange") Exchange exchange){
         boolean gameWon = gameService.isGameWon(exchange);
         if(gameWon){
             return "/currencyGame/congrats";
