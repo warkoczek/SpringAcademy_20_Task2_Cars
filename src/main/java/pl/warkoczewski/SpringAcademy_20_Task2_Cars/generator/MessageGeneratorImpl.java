@@ -10,15 +10,4 @@ public class MessageGeneratorImpl implements MessageGenerator {
         this.game = game;
     }
 
-    @Override
-    public String getResultMessage() {
-        if (game.isGameWon()) {
-            return "You won!!! Congratulations!!";
-        } else if (game.isGuessedRateBigger()) {
-            return "Your guess is greater than the actual rate";
-        } else {
-            return "Your guess is smaller than the actual rate";
-        }
-
-    }
 }

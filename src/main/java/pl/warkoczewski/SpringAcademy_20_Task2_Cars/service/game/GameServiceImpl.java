@@ -13,25 +13,15 @@ public class GameServiceImpl implements GameService {
         this.game = game;
         this.messageGenerator = messageGenerator;
     }
-
     @Override
     public Exchange randomExchange() {
         return game.getRandomExchange();
     }
 
     @Override
-    public void checkGuess(Exchange exchange) {
-        game.setGuess(exchange);
-
+    public boolean isGameWon(Exchange exchange) {
+        return game.isGameWon(exchange);
     }
 
-    @Override
-    public boolean isGameWon() {
-        return game.isGameWon();
-    }
 
-    @Override
-    public String getResultMessage() {
-        return messageGenerator.getResultMessage();
-    }
 }

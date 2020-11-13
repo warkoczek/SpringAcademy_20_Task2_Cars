@@ -6,12 +6,13 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.exchange.ExchangeServiceImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Stream;
+
 @Service
 public class GameImpl implements Game {
     private final ExchangeServiceImpl exchangeService;
-    @Getter
-    private Exchange exchange;
 
     public GameImpl(ExchangeServiceImpl exchangeService) {
         this.exchangeService = exchangeService;
@@ -24,26 +25,10 @@ public class GameImpl implements Game {
         return exchanges.get(random.nextInt(exchanges.size()));
 
     }
-    @Override
-    public boolean isGameWon() {
+
+    public boolean isGameWon(Exchange exchange) {
         return exchangeService.showExchanges().stream().anyMatch(exchange1
-                -> exchange1.getExchangeRate().equals(exchange.getExchangeRate()));
-    }
-
-    @Override
-    public boolean isGuessedRateBigger() {
-        return exchangeService.showExchanges().stream().filter(exchange1
-                -> exchange1.getExchangeCurrency().equalsIgnoreCase(exchange.getExchangeCurrency())).findFirst().orElseThrow()
-                .getExchangeRate() < exchange.getExchangeRate();
-    }
-    @Override
-    public boolean isGuessedRateSmaller() {
-        return exchangeService.showExchanges().stream().filter(exchange1
-                -> exchange1.getExchangeCurrency().equalsIgnoreCase(exchange.getExchangeCurrency())).findFirst().orElseThrow()
-                .getExchangeRate() > exchange.getExchangeRate();
-    }
-
-    public void setGuess(Exchange exchange) {
-        this.exchange=exchange;
+                -> exchange1.getExchangeCurrency().equalsIgnoreCase(exchange.getExchangeCurrency())
+        & exchange1.getExchangeRate().equals(exchange.getExchangeRate()));
     }
 }

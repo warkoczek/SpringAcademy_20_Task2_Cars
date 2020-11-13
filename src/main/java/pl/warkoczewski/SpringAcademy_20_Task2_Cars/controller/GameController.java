@@ -25,13 +25,17 @@ public class GameController {
     public String play(Model model){
         Exchange exchange = gameService.randomExchange();
         model.addAttribute("exchange", exchange);
-        model.addAttribute("resultMessage", gameService.getResultMessage());
         return "currencyGame/play";
     }
     @PostMapping("/play")
-    public String getGuessRateForm(@ModelAttribute(name = "exchange") Exchange exchange){
-        gameService.checkGuess(exchange);
-        return "currencyGame/play";
+    public String getGuessRateForm(@ModelAttribute(name = "exchange") Exchange exchange, Model model){
+        boolean gameWon = gameService.isGameWon(exchange);
+        if(gameWon){
+            return "/currencyGame/congrats";
+        }
+        model.addAttribute("message", "Wrong number");
+            return "currencyGame/play";
+
     }
 
 }

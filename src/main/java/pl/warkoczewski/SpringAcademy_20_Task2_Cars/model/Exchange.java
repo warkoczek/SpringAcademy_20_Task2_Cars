@@ -1,9 +1,11 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 
 
 @Component
+@Data
 public class Exchange {
     private String baseCurrency;
     private String exchangeCurrency;
