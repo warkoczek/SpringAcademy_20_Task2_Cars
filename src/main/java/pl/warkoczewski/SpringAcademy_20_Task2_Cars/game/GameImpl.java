@@ -1,5 +1,6 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.game;
 
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.exchange.ExchangeServiceImpl;
@@ -9,6 +10,8 @@ import java.util.Random;
 @Service
 public class GameImpl implements Game {
     private final ExchangeServiceImpl exchangeService;
+    @Getter
+    private Exchange exchange;
 
     public GameImpl(ExchangeServiceImpl exchangeService) {
         this.exchangeService = exchangeService;
@@ -22,8 +25,25 @@ public class GameImpl implements Game {
 
     }
     @Override
-    public boolean isGameWon(Exchange exchange) {
+    public boolean isGameWon() {
         return exchangeService.showExchanges().stream().anyMatch(exchange1
                 -> exchange1.getExchangeRate().equals(exchange.getExchangeRate()));
+    }
+
+    @Override
+    public boolean isGuessedRateBigger() {
+        return exchangeService.showExchanges().stream().filter(exchange1
+                -> exchange1.getExchangeCurrency().equalsIgnoreCase(exchange.getExchangeCurrency())).findFirst().orElseThrow()
+                .getExchangeRate() < exchange.getExchangeRate();
+    }
+    @Override
+    public boolean isGuessedRateSmaller() {
+        return exchangeService.showExchanges().stream().filter(exchange1
+                -> exchange1.getExchangeCurrency().equalsIgnoreCase(exchange.getExchangeCurrency())).findFirst().orElseThrow()
+                .getExchangeRate() > exchange.getExchangeRate();
+    }
+
+    public void setGuess(Exchange exchange) {
+        this.exchange=exchange;
     }
 }
