@@ -7,6 +7,7 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Exchange;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.game.GameServiceImpl;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 
 @Controller
@@ -33,7 +34,7 @@ public class GameController {
         if(gameWon){
             return "/currencyGame/congrats";
         }
-        model.addAttribute("message", "Wrong number");
+        model.addAttribute("message", "Lost! Try again!");
             return "currencyGame/play";
 
     }

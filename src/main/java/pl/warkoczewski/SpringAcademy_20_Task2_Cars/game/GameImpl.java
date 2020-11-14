@@ -25,7 +25,7 @@ public class GameImpl implements Game {
         return exchanges.get(random.nextInt(exchanges.size()));
 
     }
-
+    @Override
     public boolean isGameWon(Exchange exchange) {
         return exchangeService.showExchanges().stream().anyMatch(exchange1
                 -> exchange1.getExchangeCurrency().equalsIgnoreCase(exchange.getExchangeCurrency())
