@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
     "location",
     "current"
 })
-@Component
 public class Weather {
 
     @JsonProperty("request")

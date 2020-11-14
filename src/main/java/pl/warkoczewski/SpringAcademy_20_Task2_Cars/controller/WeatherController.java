@@ -21,4 +21,5 @@ public class WeatherController {
                 .queryParam("query", city);
         return new ResponseEntity<Weather>(restTemplate.getForEntity(urlBuilder.toUriString(), Weather.class), HttpStatus.OK);
     }*/
+
 }
