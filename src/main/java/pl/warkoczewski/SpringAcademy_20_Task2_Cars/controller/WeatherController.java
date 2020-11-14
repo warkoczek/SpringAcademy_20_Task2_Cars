@@ -12,13 +12,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Controller
 @RequestMapping("/weather")
 public class WeatherController {
-
+/*
     @GetMapping
-    public ResponseEntity<> getWeather(@RequestParam(defaultValue = "Warsaw") String city){
+    public ResponseEntity<Weather> getWeather(@RequestParam(defaultValue = "Warsaw") String city){
         RestTemplate restTemplate = new RestTemplate();
         UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromHttpUrl("http://api.weatherstack.com/current")
         .queryParam("accesKey", "816bcfe6f01568d8ca039f7bc58d7547")
                 .queryParam("query", city);
         return new ResponseEntity<Weather>(restTemplate.getForEntity(urlBuilder.toUriString(), Weather.class), HttpStatus.OK);
-    }
+    }*/
 }
