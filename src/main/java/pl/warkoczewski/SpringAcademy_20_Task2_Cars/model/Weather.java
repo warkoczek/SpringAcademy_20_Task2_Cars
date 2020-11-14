@@ -9,52 +9,54 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.stereotype.Component;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "base",
-    "rates",
-    "date"
+    "request",
+    "location",
+    "current"
 })
-public class CurrencyData {
+@Component
+public class Weather {
 
-    @JsonProperty("base")
-    private String base;
-    @JsonProperty("rates")
-    private Rates rates;
-    @JsonProperty("date")
-    private String date;
+    @JsonProperty("request")
+    private Request request;
+    @JsonProperty("location")
+    private Location location;
+    @JsonProperty("current")
+    private Current current;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("base")
-    public String getBase() {
-        return base;
+    @JsonProperty("request")
+    public Request getRequest() {
+        return request;
     }
 
-    @JsonProperty("base")
-    public void setBase(String base) {
-        this.base = base;
+    @JsonProperty("request")
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
-    @JsonProperty("rates")
-    public Rates getRates() {
-        return rates;
+    @JsonProperty("location")
+    public Location getLocation() {
+        return location;
     }
 
-    @JsonProperty("rates")
-    public void setRates(Rates rates) {
-        this.rates = rates;
+    @JsonProperty("location")
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    @JsonProperty("date")
-    public String getDate() {
-        return date;
+    @JsonProperty("current")
+    public Current getCurrent() {
+        return current;
     }
 
-    @JsonProperty("date")
-    public void setDate(String date) {
-        this.date = date;
+    @JsonProperty("current")
+    public void setCurrent(Current current) {
+        this.current = current;
     }
 
     @JsonAnyGetter
