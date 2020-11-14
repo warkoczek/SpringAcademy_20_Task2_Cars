@@ -7,14 +7,22 @@
 <body>
 <div th:object="${weather}">
 <table class="table table-striped">
-    <tr>
+    <div class="center">
+    <tr class="center">
         <th>Location</th>
+        <th>Observation Time</th>
         <th>Temperature</th>
+        <th>Humidity</th>
+        <th>Pressure</th>
     </tr>
-    <tr>
+    <tr class="center">
         <td th:text="*{location.name.toString()}"></td>
+        <td th:text="*{current.getObservationTime().toString()}"></td>
         <td th:text="*{current.getTemperature().toString()}"></td>
+        <td th:text="*{current.getHumidity().toString()}"></td>
+        <td th:text="*{current.getPressure().toString()}"></td>
     </tr>
+    </div>
     <form th:action="@{/weather}" method="post">
     <div class="input-group">
         <input type="text" class="form-control" name="city" placeholder="City">
