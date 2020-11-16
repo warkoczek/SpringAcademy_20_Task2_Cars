@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class EmailServiceImpl implements EmailService {
 
     @Override
-    public void sendEmail() {
+    public void sendEmail(String to, String subject, String content) {
 
     }
 }
