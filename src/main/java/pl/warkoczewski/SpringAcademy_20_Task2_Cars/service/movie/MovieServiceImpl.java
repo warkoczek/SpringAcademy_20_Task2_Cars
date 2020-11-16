@@ -1,6 +1,7 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.movie;
 
 import org.springframework.stereotype.Service;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.aspect.SendEmailAspect;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.MovieDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Movie;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.MovieRepositoryImpl;
@@ -20,6 +21,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @SendEmailAspect
     public Movie postMovie(MovieDTO movieDTO) {
         return movieRepository.addMovie(movieDTO);
     }

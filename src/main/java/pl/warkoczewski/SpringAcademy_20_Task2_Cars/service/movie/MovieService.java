@@ -1,4 +1,4 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.movie;
 
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.MovieDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Movie;
