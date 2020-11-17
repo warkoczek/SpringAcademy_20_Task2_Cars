@@ -1,6 +1,8 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("email")
 public class EmailController {
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @GetMapping
     public String sendEmailForm(){
@@ -27,7 +31,7 @@ public class EmailController {
         message.setTo(email);
         message.setSubject(subject);
         message.setText(content);
-
+        javaMailSender.send(message);
         return "email/emailForm";
     }
 }

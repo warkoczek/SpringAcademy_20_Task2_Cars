@@ -6,6 +6,13 @@ public class Movie {
     private String releaseYear;
     private String producer;
 
+    public Movie(Long id, String name, String releaseYear, String producer) {
+        this.id = id;
+        this.name = name;
+        this.releaseYear = releaseYear;
+        this.producer = producer;
+    }
+
     public Movie(String name, String releaseYear, String producer) {
         this.name = name;
         this.releaseYear = releaseYear;

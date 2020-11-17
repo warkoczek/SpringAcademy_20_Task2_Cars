@@ -6,6 +6,6 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Movie;
 import java.util.List;
 
 public interface MovieService {
-    List<Movie> showMovies();
+    List<MovieDTO> showMovies();
     Movie postMovie(MovieDTO movieDTO);
 }

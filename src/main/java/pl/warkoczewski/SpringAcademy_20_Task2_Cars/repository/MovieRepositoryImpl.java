@@ -15,11 +15,11 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     private void initializeMovieList() {
-        movies.add(new Movie("Rocky V", "1990", "Irwin Winkler and Robert Chartoff" ));
-        movies.add(new Movie("Dirty Dancing", "1987", "Linda Gottlieb" ));
-        movies.add(new Movie("Ice Age", "2002", "Lori Forte" ));
-        movies.add(new Movie("Apollo 13", "1995", "Brian Grazer" ));
-        movies.add(new Movie("Rocky Balboa", "2006", "Charles Winkler" ));
+        movies.add(new Movie(1l, "Rocky V", "1990", "Irwin Winkler and Robert Chartoff" ));
+        movies.add(new Movie(2l,"Dirty Dancing", "1987", "Linda Gottlieb" ));
+        movies.add(new Movie(3l,"Ice Age", "2002", "Lori Forte" ));
+        movies.add(new Movie(4l,"Apollo 13", "1995", "Brian Grazer" ));
+        movies.add(new Movie(5l,"Rocky Balboa", "2006", "Charles Winkler" ));
     }
 
     @Override
