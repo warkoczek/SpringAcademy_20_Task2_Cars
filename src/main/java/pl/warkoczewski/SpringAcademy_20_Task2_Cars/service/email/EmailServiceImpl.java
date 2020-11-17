@@ -35,7 +35,7 @@ public class EmailServiceImpl implements EmailService {
     private SimpleMailMessage createMessage(){
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom("waros455@gmail.com");
-        simpleMailMessage.setTo("awarkoczewski@yahoo.com");
+        simpleMailMessage.setTo("awarkocz@yahoo.com");
         simpleMailMessage.setSubject("AddingMovie");
         simpleMailMessage.setText("Your movie was successfully added");
         return simpleMailMessage;
