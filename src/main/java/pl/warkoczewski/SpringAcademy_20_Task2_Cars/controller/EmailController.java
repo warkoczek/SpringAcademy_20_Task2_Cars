@@ -13,13 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("email")
 public class EmailController {
+    /*
     @Autowired
-    private JavaMailSender javaMailSender;
+    private JavaMailSender javaMailSender;*/
 
     @GetMapping
     public String sendEmailForm(){
         return "email/emailForm";
     }
+    /*
     @PostMapping
     public String processEmailForm(HttpServletRequest request){
         String fullName = request.getParameter("fullName");
@@ -33,5 +35,5 @@ public class EmailController {
         message.setText(content);
         javaMailSender.send(message);
         return "email/emailForm";
-    }
+    }*/
 }

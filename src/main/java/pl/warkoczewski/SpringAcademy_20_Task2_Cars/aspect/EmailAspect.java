@@ -13,6 +13,6 @@ public class EmailAspect {
     }
     @After("@annotation(SendEmailAspect)")
     public void sendEmailAfterPostingMovie(){
-        //emailService.sendEmail();
+        emailService.sendEmail();
     }
 }

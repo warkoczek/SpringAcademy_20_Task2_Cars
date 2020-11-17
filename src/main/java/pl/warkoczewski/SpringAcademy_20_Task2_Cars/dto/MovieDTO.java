@@ -1,8 +1,13 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class MovieDTO {
+    @NotNull
     private String name;
+    @NotNull
     private String releaseYear;
+    @NotNull
     private String producer;
 
     public MovieDTO(String name, String releaseYear, String producer) {
