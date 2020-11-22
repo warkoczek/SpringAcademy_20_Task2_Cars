@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.CarDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Range;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
 
 import javax.validation.Valid;
@@ -30,11 +30,19 @@ public class CarController {
         model.addAttribute("cars", cars);
         return "cars/cars";
     }
-    @GetMapping("/productionYear")
-    public String showCarsByProductionYear(@RequestParam(name = "min") Integer min
-            , @RequestParam(name = "max") Integer max, Model model){
-        List<Car> byProductionYear = carService.findByProductionYear(min, max);
-        model.addAttribute("cars", byProductionYear);
+    @GetMapping("/search")
+    public String getSearchPage(Model model) {
+        model.addAttribute("range", new Range());
+        return "cars/search";
+    }
+    @PostMapping("/search")
+    public String getSearchingData(@ModelAttribute(name = "range") Range range, Model model){
+        List<Car> cars = carService.findByProductionYear(range.getFrom(), range.getTo());
+        if(cars.isEmpty()){
+            model.addAttribute("message", "No cars");
+            return "cars/search";
+        }
+        model.addAttribute("cars", cars);
         return "cars/cars";
     }
     @GetMapping("/add")

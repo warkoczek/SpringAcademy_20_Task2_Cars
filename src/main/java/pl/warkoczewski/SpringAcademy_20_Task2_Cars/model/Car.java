@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Data
@@ -19,6 +16,7 @@ public class Car {
     private Long id;
     private String mark;
     private String model;
+    @Enumerated(value = EnumType.STRING)
     private Color color;
     private Integer productionYear;
 

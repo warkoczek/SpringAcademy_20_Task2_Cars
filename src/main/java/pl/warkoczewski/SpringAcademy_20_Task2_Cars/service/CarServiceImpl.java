@@ -4,6 +4,7 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.service;
 import org.springframework.stereotype.Service;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.CarDTO;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.CarRepository;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class CarServiceImpl implements CarService {
     }
     @Override
     public void addCar(CarDTO carDTO) {
-        Car car = new Car(carDTO.getMark(), carDTO.getModel(), carDTO.getColor(), carDTO.getProductionYear());
+        Car car = new Car(carDTO.getMark(), carDTO.getModel(), Color.valueOf(carDTO.getColor()), carDTO.getProductionYear());
         carRepository.save(car);
     }
 }

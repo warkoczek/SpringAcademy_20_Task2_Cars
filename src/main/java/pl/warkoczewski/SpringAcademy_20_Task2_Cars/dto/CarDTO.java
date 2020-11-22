@@ -1,5 +1,6 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,6 @@ import java.time.Year;
 public class CarDTO {
     private String mark;
     private String model;
-    private Color color;
+    private String color;
     private Integer productionYear;
 }

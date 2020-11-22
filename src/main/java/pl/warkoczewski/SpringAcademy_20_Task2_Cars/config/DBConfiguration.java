@@ -8,10 +8,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 
 @Configuration
-public class DatabaseConfiguration {
+public class DBConfiguration {
     private DataSource dataSource;
     @Autowired
-    public DatabaseConfiguration(DataSource dataSource) {
+    public DBConfiguration(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
