@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface CarService {
     List<Car> findAll();
+    List<Car> findByProductionYear(Integer from, Integer to);
     void addCar(CarDTO carDTO);
+
 
 }

@@ -16,5 +16,5 @@ public class Car {
     private String mark;
     private String model;
     private String color;
-    private int productionYear;
+    private Integer productionYear;
 }

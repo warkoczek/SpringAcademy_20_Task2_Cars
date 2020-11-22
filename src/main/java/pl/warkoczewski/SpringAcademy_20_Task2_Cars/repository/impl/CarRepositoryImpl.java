@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 @Repository
 public class CarRepositoryImpl implements CarRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -19,7 +22,8 @@ public class CarRepositoryImpl implements CarRepository {
         //createCarTable();
         //init();
         //deleteTable();
-        findAll().forEach(System.out::println);
+        //findAll().forEach(System.out::println);
+        //findByProductionYear(2000,2005).forEach(System.out::println);
     }
     private void createCarTable() {
         String sql = "CREATE TABLE cars(car_id int, mark varchar(255), model varchar(255), color varchar(255), production_year YEAR )";
@@ -57,5 +61,14 @@ public class CarRepositoryImpl implements CarRepository {
                         , Integer.parseInt(String.valueOf(stringObjectMap.get("production_year")).substring(0,4))
         )));
         return cars;
+    }
+    @Override
+    public List<Car> findByProductionYear(Integer from, Integer to) {
+        return findAll().stream().filter(getCarPredicate(from, to))
+                .collect(Collectors.toList());
+    }
+
+    private Predicate<Car> getCarPredicate(Integer from, Integer to) {
+        return car -> (car.getProductionYear() >= from && car.getProductionYear() <= to);
     }
 }

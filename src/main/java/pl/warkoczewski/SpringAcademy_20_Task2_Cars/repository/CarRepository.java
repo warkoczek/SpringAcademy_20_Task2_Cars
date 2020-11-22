@@ -8,4 +8,5 @@ import java.util.List;
 public interface CarRepository {
     void addCar(Car car);
     List<Car> findAll();
+    List<Car> findByProductionYear(Integer from, Integer to);
 }
