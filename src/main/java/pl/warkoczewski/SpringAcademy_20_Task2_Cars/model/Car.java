@@ -3,6 +3,10 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.Year;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,5 +16,5 @@ public class Car {
     private String mark;
     private String model;
     private String color;
-    private String productionYear;
+    private int productionYear;
 }

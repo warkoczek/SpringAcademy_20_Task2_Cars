@@ -45,6 +45,6 @@ public class CarController {
             return "cars/add";
         }
         carService.addCar(carDTO);
-        return "cars/added";
+        return "redirect:";
     }
 }

@@ -27,7 +27,7 @@
 </div>
 <div class="control-label" for="productionYear">
     <label>Production Year</label>
-    <input id="productionYear" class="form-control" type="text" th:field="*{productionYear}" required autofocus="autofocus"/>
+    <input id="productionYear" class="form-control" type="number" th:field="*{productionYear}" required autofocus="autofocus"/>
     <span th:if="${#fields.hasErrors('productionYear')}" th:errors="*{productionYear}">Incorrect production year</span>
 </div>
 <div class="form-group">

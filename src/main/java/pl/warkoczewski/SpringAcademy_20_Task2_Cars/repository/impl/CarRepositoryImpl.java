@@ -6,6 +6,8 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.CarDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.CarRepository;
 
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 @Repository
@@ -16,19 +18,24 @@ public class CarRepositoryImpl implements CarRepository {
         this.jdbcTemplate = jdbcTemplate;
         //createCarTable();
         //init();
+        //deleteTable();
         findAll().forEach(System.out::println);
     }
     private void createCarTable() {
-        String sql = "CREATE TABLE cars(car_id int, mark varchar(255), model varchar(255), color varchar(255), production_year varchar(255))";
+        String sql = "CREATE TABLE cars(car_id int, mark varchar(255), model varchar(255), color varchar(255), production_year YEAR )";
         jdbcTemplate.update(sql);
     }
     private void init(){
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(1l, "Fiat", "Maluch", "white", "1990"));
-        cars.add(new Car(2l, "Peugeot", "206", "blue", "1999"));
-        cars.add(new Car(3l, "Toyota", "Yaris", "black", "2005"));
+        cars.add(new Car(1l, "Fiat", "Maluch", "white", 1990));
+        cars.add(new Car(2l, "Peugeot", "206", "blue", 1999));
+        cars.add(new Car(3l, "Toyota", "Yaris", "black", 2005));
         String sql = "INSERT INTO cars values(?,?,?,?,?)";
         cars.forEach(car -> jdbcTemplate.update(sql, car.getId(), car.getMark(), car.getModel(), car.getColor(), car.getProductionYear()));
+    }
+    private void deleteTable(){
+        String sql = "DROP TABLE  cars";
+        jdbcTemplate.update(sql);
     }
 
     @Override
@@ -47,7 +54,7 @@ public class CarRepositoryImpl implements CarRepository {
                         , String.valueOf((stringObjectMap.get("mark")))
                         , String.valueOf(stringObjectMap.get("model"))
                         , String.valueOf(stringObjectMap.get("color"))
-                        , String.valueOf(stringObjectMap.get("production_year"))
+                        , Integer.parseInt(String.valueOf(stringObjectMap.get("production_year")).substring(0,4))
         )));
         return cars;
     }
