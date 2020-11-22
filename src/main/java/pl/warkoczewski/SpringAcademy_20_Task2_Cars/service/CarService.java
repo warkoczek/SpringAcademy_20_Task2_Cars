@@ -6,8 +6,8 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.CarDTO;
 import java.util.List;
 
 public interface CarService {
-    List<Car> findAll();
-    List<Car> findByProductionYear(Integer from, Integer to);
+    List<CarDTO> findAll();
+    List<CarDTO> findByProductionYear(Integer from, Integer to);
     void addCar(CarDTO carDTO);
 
 

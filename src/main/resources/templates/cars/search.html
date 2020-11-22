@@ -8,15 +8,16 @@
 <body>
 <nav th:insert="~{fragments/head :: navbarFragment}"></nav><br><br><br>
 <div class="box">
-<form th:action="@{/cars/search}" method="post">
+<form th:action="@{/cars/search}" method="post" th:object="${range}">
+    <p th:text="${message}"></p>
     <h3>Year:</h3>
     <div class="form-group">
         <label class="control-label" for="from"
-        >From</label><input id="from" class="form-control" type="number" required autofocus="autofocus"/>
+        >From</label><input id="from" class="form-control" type="number" th:field="*{from}" required autofocus="autofocus"/>
     </div>
 
     <div class="control-label" for="to">
-        <label>To</label><input id="to" class="form-control" type="number" required autofocus="autofocus"/>
+        <label>To</label><input id="to" class="form-control" type="number" th:field="*{to}" required autofocus="autofocus"/>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success">Find</button>

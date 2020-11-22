@@ -13,33 +13,23 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Mark</th>
                 <th>Model</th>
                 <th>Color</th>
                 <th>Year</th>
-                <th>Action</th>
-                <th>Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="car : ${cars}">
-                <td th:text="${car.id}"></td>
                 <td th:text="${car.mark}"></td>
                 <td th:text="${car.model}"></td>
                 <td th:text="${car.color}"></td>
                 <td th:text="${car.productionYear}"></td>
-                <td>
-                    <a style="color: green" th:href="@{cars/update/{id}(id=${car.id})}" class="btn-btn-primary">Update</a>
-                </td>
-                <td>
-                    <a style="color: green" th:href="@{cars/update/{id}(id=${car.id})}" class="btn-btn-primary">Delete</a>
-                </td>
-
             </tr>
             </tbody>
         </table>
         <a style="color: green" th:href="@{/cars/add}" class="btn-btn-primary">Add</a>
+        <a style="color: green" th:href="@{/cars/search}" class="btn-btn-primary">Search</a>
     </div>
 </div><br>
 

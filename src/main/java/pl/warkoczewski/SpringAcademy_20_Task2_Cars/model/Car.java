@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -14,10 +15,13 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String mark;
+    @NotNull
     private String model;
     @Enumerated(value = EnumType.STRING)
     private Color color;
+    @NotNull
     private Integer productionYear;
 
     public Car() {

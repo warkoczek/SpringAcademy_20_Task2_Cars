@@ -26,7 +26,7 @@ public class CarController {
     }
     @GetMapping
     public String showCars(Model model){
-        List<Car> cars = carService.findAll();
+        List<CarDTO> cars = carService.findAll();
         model.addAttribute("cars", cars);
         return "cars/cars";
     }
@@ -37,9 +37,9 @@ public class CarController {
     }
     @PostMapping("/search")
     public String getSearchingData(@ModelAttribute(name = "range") Range range, Model model){
-        List<Car> cars = carService.findByProductionYear(range.getFrom(), range.getTo());
+        List<CarDTO> cars = carService.findByProductionYear(range.getFrom(), range.getTo());
         if(cars.isEmpty()){
-            model.addAttribute("message", "No cars");
+            model.addAttribute("message", "No cars in your range");
             return "cars/search";
         }
         model.addAttribute("cars", cars);
