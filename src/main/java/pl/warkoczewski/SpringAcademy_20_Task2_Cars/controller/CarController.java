@@ -20,6 +20,11 @@ public class CarController {
     public CarController(CarServiceImpl carService) {
         this.carService = carService;
     }
+    @GetMapping("/home")
+    public String home(){
+        return "cars/home";
+    }
+
     @GetMapping
     public String showCars(Model model){
         List<Car> cars = carService.findAll();
@@ -32,7 +37,7 @@ public class CarController {
         return "cars/add";
     }
     @PostMapping("/add")
-    public String getAddingForm(@ModelAttribute(value = "carDto") CarDTO carDTO){
+    public String getAddingForm(@ModelAttribute(value = "carDTO") CarDTO carDTO){
         return "cars/add";
     }
 }
