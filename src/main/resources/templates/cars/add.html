@@ -16,19 +16,19 @@
 
 <div class="control-label" for="model">
     <label>Model</label><input id="model" class="form-control" type="text"  th:field="*{model}" required autofocus="autofocus"/>
-    <span th:if="${#fields.hasErrors()}" th:errors="*{model}">Model does not exist</span>
+    <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}">Model does not exist</span>
 </div>
 
 <div class="form-group">
     <label class="control-label" for="color"
     >Color</label>
     <input id="color" class="form-control" type="text" th:field="*{color}" required autofocus="autofocus"/>
-    <span th:if="${#fields.hasErrors()}" th:errors="*{color}">Color does not exist</span>
+    <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color does not exist</span>
 </div>
 <div class="control-label" for="productionYear">
     <label>Production Year</label>
     <input id="productionYear" class="form-control" type="text" th:field="*{productionYear}" required autofocus="autofocus"/>
-    <span th:if="${#fields.hasErrors()}" th:errors="*{productionYear}">Incorrect username</span>
+    <span th:if="${#fields.hasErrors('productionYear')}" th:errors="*{productionYear}">Incorrect production year</span>
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-success">Add</button>

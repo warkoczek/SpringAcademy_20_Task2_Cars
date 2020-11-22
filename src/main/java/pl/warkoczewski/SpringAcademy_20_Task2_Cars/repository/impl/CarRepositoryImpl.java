@@ -33,8 +33,8 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public void addCar(Car car) {
-        String sql = "INSERT INTO cars values(?,?,?,?)";
-        jdbcTemplate.update(sql, car.getId(), car.getMark(), car.getModel(), car.getProductionYear());
+        String sql = "INSERT INTO cars values(?,?,?,?,?)";
+        jdbcTemplate.update(sql, car.getId(), car.getMark(), car.getModel(), car.getColor(), car.getProductionYear());
 
     }
 
