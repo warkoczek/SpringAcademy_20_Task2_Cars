@@ -1,4 +1,4 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +11,6 @@ public class Car {
     private Long id;
     private String mark;
     private String model;
+    private String color;
     private String productionYear;
 }
