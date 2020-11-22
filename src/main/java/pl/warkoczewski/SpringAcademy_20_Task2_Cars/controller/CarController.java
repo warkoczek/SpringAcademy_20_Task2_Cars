@@ -24,20 +24,18 @@ public class CarController {
     public String home(){
         return "cars/home";
     }
-
     @GetMapping
     public String showCars(Model model){
         List<Car> cars = carService.findAll();
         model.addAttribute("cars", cars);
         return "cars/cars";
     }
-    @PostMapping
-    public ModelAndView showCarsByProductionYear(@RequestParam(name = "from", required = false) Integer from
-            , @RequestParam(name = "to", required = false) Integer to, ModelAndView modelAndView){
-        List<Car> byProductionYear = carService.findByProductionYear(from, to);
-        modelAndView.setViewName("cars/cars");
-        modelAndView.addObject("cars", byProductionYear);
-        return modelAndView;
+    @GetMapping("/productionYear")
+    public String showCarsByProductionYear(@RequestParam(name = "min") Integer min
+            , @RequestParam(name = "max") Integer max, Model model){
+        List<Car> byProductionYear = carService.findByProductionYear(min, max);
+        model.addAttribute("cars", byProductionYear);
+        return "cars/cars";
     }
     @GetMapping("/add")
     public String getAddPage(Model model){

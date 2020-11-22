@@ -44,12 +44,12 @@
 </div><br>
 <form th:action="@{/cars}" method="post">
     <div class="form-group">
-        <label class="control-label" for="from"
-        >From</label><input id="from" class="form-control" type="number" th:value="from" required autofocus="autofocus"/>
+        <label class="control-label" for="min"
+        >From</label><input id="min" class="form-control" type="number" required autofocus="autofocus"/>
     </div>
 
-    <div class="control-label" for="to">
-        <label>To</label><input id="to" class="form-control" type="number"  th:value="to" required autofocus="autofocus"/>
+    <div class="control-label" for="max">
+        <label>To</label><input id="max" class="form-control" type="number" required autofocus="autofocus"/>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success">Find</button>
