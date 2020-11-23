@@ -1,7 +1,7 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.reader;
 
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.New;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.News;
 
 public interface NewsReader {
-    New getWeather(String city);
+    News getNews(String city);
 }
