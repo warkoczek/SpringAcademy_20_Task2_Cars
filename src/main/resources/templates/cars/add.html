@@ -23,8 +23,8 @@
     <label class="control-label" th:for="color"
     >Color</label>
     <select th:field="*{color}">
-        <!--/*@thymesVar id="color" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color"*/-->
-        <option th:each="colorType : ${colorTypes}" th:text="${colorType.name()}" th:value="${colorType}"></option>
+        <!--/*@thymesVar id="values" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color"*/-->
+        <option th:each="colorType : ${T(pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color).values()}" th:text="${colorType}" th:value="${colorType}"></option>
     </select>
 </div><br><br>
 <div class="control-label" for="productionYear">
