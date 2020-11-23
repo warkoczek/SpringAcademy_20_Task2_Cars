@@ -6,5 +6,8 @@ public enum Color {
     @JsonProperty("BLUE") BLUE,
     @JsonProperty("WHITE") WHITE,
     @JsonProperty("BLACK") BLACK,
-    @JsonProperty("YELLOW") YELLOW
+    @JsonProperty("RED") RED,
+    @JsonProperty("PURPLE") PURPLE,
+    @JsonProperty("PINK") PINK,
+    @JsonProperty("BROWN") BROWN
 }

@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.CarDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Range;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
 
@@ -46,12 +47,13 @@ public class CarController {
         return "cars/cars";
     }
     @GetMapping("/add")
-    public String getAddPage(Model model){
+    public String displayAddForm(Model model){
         model.addAttribute("carDTO", new CarDTO());
+        model.addAttribute("colorTypes", Color.values());
         return "cars/add";
     }
     @PostMapping("/add")
-    public String getAddingForm(@ModelAttribute(value = "carDTO") @Valid CarDTO carDTO, BindingResult bindingResult){
+    public String processAddingForm(@ModelAttribute(value = "carDTO") @Valid CarDTO carDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "cars/add";
         }
