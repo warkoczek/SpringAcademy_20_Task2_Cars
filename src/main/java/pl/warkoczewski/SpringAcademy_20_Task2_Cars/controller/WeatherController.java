@@ -3,16 +3,15 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Weather;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.WeatherServiceImpl;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.NewsServiceImpl;
 
 
 @Controller
 @RequestMapping("/weather")
 public class WeatherController {
-    private final WeatherServiceImpl weatherService;
+    private final NewsServiceImpl weatherService;
 
-    public WeatherController(WeatherServiceImpl weatherService) {
+    public WeatherController(NewsServiceImpl weatherService) {
         this.weatherService = weatherService;
     }
 
