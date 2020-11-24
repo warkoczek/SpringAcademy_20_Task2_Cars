@@ -4,12 +4,15 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
+import org.w3c.dom.ls.LSOutput;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller.client.NewsReader;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.config.DBConfiguration;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.News;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.Article;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ArticleRepositoryImpl implements ArticleRepository {
@@ -22,7 +25,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         this.newsReader = newsReader;
         this.modelMapper = modelMapper;
     }
-    @EventListener(ApplicationReadyEvent.class)
+    //@EventListener(ApplicationReadyEvent.class)
     public void initDB(){
         dbConfiguration.dropTable();
         dbConfiguration.createTable();
@@ -46,11 +49,20 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     }
     @Override
     public List<Article> findAll() {
+        List<Article> articles = new ArrayList<>();
         String sql = "SELECT * FROM article";
-        dbConfiguration.jdbcTemplate().queryForList(sql).stream();
-        return null;
+        dbConfiguration.jdbcTemplate().queryForList(sql).forEach(stringObjectMap -> {
+            articles.add(createArticle(stringObjectMap));
+        });
+        return articles;
     }
 
+    private Article createArticle(Map<String, Object> stringObjectMap) {
+        return new Article(String.valueOf(stringObjectMap.get("title"))
+                , String.valueOf(stringObjectMap.get("url"))
+                , String.valueOf(stringObjectMap.get("imageUrl")), String.valueOf(stringObjectMap.get("summary"))
+                , String.valueOf(stringObjectMap.get("publishedAt")));
+    }
 
 
 }

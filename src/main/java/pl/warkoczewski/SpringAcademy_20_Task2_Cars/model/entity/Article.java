@@ -1,12 +1,12 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString(exclude = "article_Id")
 public class Article {
 
     private Long article_Id;
