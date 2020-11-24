@@ -13,7 +13,14 @@ public class Article {
     private String title;
     private String url;
     private String imageUrl;
-    private String newsSite;
     private String summary;
     private String publishedAt;
+
+    public Article(String title, String url, String imageUrl, String summary, String publishedAt) {
+        this.title = title;
+        this.url = url;
+        this.imageUrl = imageUrl;
+        this.summary = summary;
+        this.publishedAt = publishedAt;
+    }
 }
