@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
-import org.w3c.dom.ls.LSOutput;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller.client.NewsReader;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.config.DBConfiguration;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.News;
@@ -25,7 +24,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         this.newsReader = newsReader;
         this.modelMapper = modelMapper;
     }
-    //@EventListener(ApplicationReadyEvent.class)
+    @EventListener(ApplicationReadyEvent.class)
     public void initDB(){
         dbConfiguration.dropTable();
         dbConfiguration.createTable();
@@ -38,8 +37,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     public void addArticle(News news) {
         Article article = getArticle(news);
         dbConfiguration.jdbcTemplate().update(getSqlString()
-                , article.getTitle(), article.getUrl(), article.getImageUrl()
-                , article.getSummary(), article.getPublishedAt());
+                , article.getTitle(), article.getUrl(), article.getImage_url()
+                , article.getSummary(), article.getPublished_at());
     }
     private Article getArticle(News news) {
         return modelMapper.map(news, Article.class);
@@ -58,10 +57,10 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     }
 
     private Article createArticle(Map<String, Object> stringObjectMap) {
-        return new Article(String.valueOf(stringObjectMap.get("title"))
+        return new Article(Long.parseLong(String.valueOf(stringObjectMap.get("article_id"))), String.valueOf(stringObjectMap.get("title"))
                 , String.valueOf(stringObjectMap.get("url"))
-                , String.valueOf(stringObjectMap.get("imageUrl")), String.valueOf(stringObjectMap.get("summary"))
-                , String.valueOf(stringObjectMap.get("publishedAt")));
+                , String.valueOf(stringObjectMap.get("image_url")), String.valueOf(stringObjectMap.get("summary"))
+                , String.valueOf(stringObjectMap.get("published_at")));
     }
 
 

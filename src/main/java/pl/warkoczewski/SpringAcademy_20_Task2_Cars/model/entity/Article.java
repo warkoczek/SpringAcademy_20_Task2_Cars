@@ -4,23 +4,14 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString(exclude = "article_Id")
+@Data
 public class Article {
 
-    private Long article_Id;
+    private Long article_id;
     private String title;
     private String url;
-    private String imageUrl;
+    private String image_url;
     private String summary;
-    private String publishedAt;
+    private String published_at;
 
-    public Article(String title, String url, String imageUrl, String summary, String publishedAt) {
-        this.title = title;
-        this.url = url;
-        this.imageUrl = imageUrl;
-        this.summary = summary;
-        this.publishedAt = publishedAt;
-    }
 }

@@ -8,8 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ArticleDTO {
+    private Long article_id;
     private String title;
     private String url;
+    private String image_url;
     private String summary;
 
 }
