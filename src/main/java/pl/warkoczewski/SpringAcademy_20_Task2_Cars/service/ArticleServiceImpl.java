@@ -28,4 +28,14 @@ public class ArticleServiceImpl implements ArticleService {
                 .map(article -> modelMapper.map(article,ArticleDTO.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ArticleDTO findById(Long article_id) {
+        return articleRepository.findById(article_id);
+    }
+    @Override
+    public void update(ArticleDTO articleDTO) {
+        articleRepository.update(articleDTO);
+    }
+
 }

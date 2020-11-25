@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ArticleService {
     List<ArticleDTO> showArticles();
+    ArticleDTO findById(Long article_id);
+    void update(ArticleDTO articleDTO);
 }

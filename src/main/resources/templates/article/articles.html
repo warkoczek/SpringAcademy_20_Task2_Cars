@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Weather</title>
+    <title>Articles</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
@@ -15,13 +15,14 @@
             <tr>
                 <th>Title</th>
                 <th>Website</th>
-                <th>Image</th>
                 <th>Summary</th>
+                <th>Action</th>
             </tr>
             <tr th:each="article : ${articles}">
                 <td th:text="${article.getTitle()}"></td>
                 <td th:text="${article.getUrl()}"></td>
                 <td th:text="${article.getSummary()}"></td>
+                <td><a style="color: green" th:href="@{articles/update/{article_id}(article_id=*{article.getArticle_id()})}" class="btn-btn-primary">Update</a></td>
             </tr>
         </table>
     </div>
