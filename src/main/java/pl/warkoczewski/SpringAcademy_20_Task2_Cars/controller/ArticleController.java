@@ -4,12 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.ArticleDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.Article;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.ArticleServiceImpl;
 
 @Controller
-@RequestMapping("articles")
+@RequestMapping("/articles")
 public class ArticleController {
     private final ArticleServiceImpl articleService;
 
@@ -22,14 +23,14 @@ public class ArticleController {
         return "article/articles";
     }
     @GetMapping("/update/{article_id}")
-    public String displayUpdateArticlePage(@PathVariable("article_id") Long article_id, Model model){
+    public ModelAndView displayUpdateArticlePage(@PathVariable("article_id") Long article_id, ModelAndView modelAndView){
         ArticleDTO article = articleService.findById(article_id);
-        model.addAttribute("article", article);
-        return "article/update";
+        modelAndView.addObject("article", article);
+        modelAndView.setViewName("article/update");
+        return modelAndView;
     }
     @PostMapping("/update")
-    public String processUpdateForm(@ModelAttribute(name = "article") ArticleDTO articleDTO, BindingResult bindingResult,
-                                    Model model){
+    public String processUpdateForm(@ModelAttribute(name = "article") ArticleDTO articleDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "article/update";
         }
