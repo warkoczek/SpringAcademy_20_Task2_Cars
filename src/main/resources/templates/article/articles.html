@@ -8,34 +8,23 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div th:object="${weather}">
-<table class="table table-striped">
-    <div class="center">
-    <tr class="center">
-        <th>Location</th>
-        <th>Observation Time</th>
-        <th>Temperature</th>
-        <th>Humidity</th>
-        <th>Pressure</th>
-    </tr>
-    <tr class="center">
-        <td th:text="*{location.name.toString()}"></td>
-        <td th:text="*{current.getObservationTime().toString()}"></td>
-        <td th:text="*{current.getTemperature().toString()}"></td>
-        <td th:text="*{current.getHumidity().toString()}"></td>
-        <td th:text="*{current.getPressure().toString()}"></td>
-    </tr>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(articles)}">
+        <h2>Articles</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Website</th>
+                <th>Image</th>
+                <th>Summary</th>
+            </tr>
+            <tr th:each="article : ${articles}">
+                <td th:text="${article.getTitle()}"></td>
+                <td th:text="${article.getUrl()}"></td>
+                <td th:text="${article.getSummary()}"></td>
+            </tr>
+        </table>
     </div>
-    <form th:action="@{/weather}" method="post">
-    <div class="input-group">
-        <input type="text" class="form-control" name="city" placeholder="City">
-        <div class="input-group-btn">
-            <button type="submit" class="btn btn-default">Get Weather
-                <i class="glyphicon glyphicon-search" style="color: green"></i></button><br><br>
-        </div>
-    </div>
-    </form>
-</table>
 </div>
 </body>
 </html>

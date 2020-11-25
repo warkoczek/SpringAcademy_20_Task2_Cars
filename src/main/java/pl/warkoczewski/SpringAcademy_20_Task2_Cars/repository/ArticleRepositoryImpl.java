@@ -6,6 +6,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller.client.NewsReader;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.config.DBConfiguration;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.ArticleDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.News;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.Article;
 
@@ -47,8 +48,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         return "INSERT INTO article(title, url, image_url, summary, published_at) values (?,?,?,?,?)";
     }
     @Override
-    public List<Article> findAll() {
-        List<Article> articles = new ArrayList<>();
+    public List<ArticleDTO> findAll() {
+        List<ArticleDTO> articles = new ArrayList<>();
         String sql = "SELECT * FROM article";
         dbConfiguration.jdbcTemplate().queryForList(sql).forEach(stringObjectMap -> {
             articles.add(createArticle(stringObjectMap));
@@ -56,11 +57,12 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         return articles;
     }
 
-    private Article createArticle(Map<String, Object> stringObjectMap) {
-        return new Article(Long.parseLong(String.valueOf(stringObjectMap.get("article_id"))), String.valueOf(stringObjectMap.get("title"))
+    private ArticleDTO createArticle(Map<String, Object> stringObjectMap) {
+        return new ArticleDTO(Long.parseLong(String.valueOf(stringObjectMap.get("article_id")))
+                , String.valueOf(stringObjectMap.get("title"))
                 , String.valueOf(stringObjectMap.get("url"))
-                , String.valueOf(stringObjectMap.get("image_url")), String.valueOf(stringObjectMap.get("summary"))
-                , String.valueOf(stringObjectMap.get("published_at")));
+                , String.valueOf(stringObjectMap.get("image_url"))
+                , String.valueOf(stringObjectMap.get("summary")));
     }
 
 
