@@ -9,7 +9,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -17,16 +22,20 @@ import org.springframework.stereotype.Component;
     "location",
     "current"
 })
+
 public class Weather {
 
     @JsonProperty("request")
+    @OneToOne
     private Request request;
     @JsonProperty("location")
+    @OneToOne
     private Location location;
     @JsonProperty("current")
+    @OneToOne
     private Current current;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("request")
     public Request getRequest() {

@@ -8,11 +8,11 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.WeatherServiceImpl;
 
 
 @Controller
-@RequestMapping("/weather")
-public class WeatherController {
+@RequestMapping("/meteo")
+public class MeteoController {
     private final WeatherServiceImpl weatherService;
 
-    public WeatherController(WeatherServiceImpl weatherService) {
+    public MeteoController(WeatherServiceImpl weatherService) {
         this.weatherService = weatherService;
     }
 
@@ -21,13 +21,13 @@ public class WeatherController {
         return "home/home";
     }
     @GetMapping
-    public String getWeather(@RequestParam() String city, Model model){
+    public String getMeteo(@RequestParam(defaultValue = "Warsaw") String city, Model model){
         Weather weather = weatherService.showWeather(city);
         model.addAttribute("weather", weather);
         return "/weather/weather";
     }
     @PostMapping()
-    public String getWeatherForm(@ModelAttribute(name = "city") String city, Model model){
+    public String getMeteoForm(@ModelAttribute(name = "city") String city, Model model){
         Weather weather = weatherService.showWeather(city);
         model.addAttribute("weather", weather);
         return "/weather/weather";

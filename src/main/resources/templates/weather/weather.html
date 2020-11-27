@@ -12,17 +12,23 @@
     <div class="center">
     <tr class="center">
         <th>Location</th>
+        <th>Local Time</th>
         <th>Observation Time</th>
         <th>Temperature</th>
         <th>Humidity</th>
         <th>Pressure</th>
+        <th>Wind</th>
+        <th>Cloud Cover</th>
     </tr>
     <tr class="center">
-        <td th:text="*{location.name.toString()}"></td>
+        <td th:text="*{location.name}"></td>
+        <td th:text="*{location.getLocaltime()}"></td>
         <td th:text="*{current.getObservationTime().toString()}"></td>
         <td th:text="*{current.getTemperature().toString()}"></td>
         <td th:text="*{current.getHumidity().toString()}"></td>
         <td th:text="*{current.getPressure().toString()}"></td>
+        <td th:text="*{current.getWindSpeed()}"></td>
+        <td th:text="*{current.getCloudcover()}"></td>
     </tr>
     </div>
 </table>

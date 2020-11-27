@@ -1,6 +1,7 @@
 
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -9,6 +10,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -22,8 +32,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "localtime_epoch",
     "utc_offset"
 })
-public class Location {
 
+public class Location {
     @JsonProperty("name")
     private String name;
     @JsonProperty("country")
@@ -35,7 +45,7 @@ public class Location {
     @JsonProperty("lon")
     private String lon;
     @JsonProperty("timezone_id")
-    private String timezoneId;
+    private  String timezoneId;
     @JsonProperty("localtime")
     private String localtime;
     @JsonProperty("localtime_epoch")
@@ -44,87 +54,70 @@ public class Location {
     private String utcOffset;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
     @JsonProperty("name")
     public String getName() {
         return name;
     }
-
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
-
     @JsonProperty("country")
     public String getCountry() {
         return country;
     }
-
     @JsonProperty("country")
     public void setCountry(String country) {
         this.country = country;
     }
-
     @JsonProperty("region")
     public String getRegion() {
         return region;
     }
-
     @JsonProperty("region")
     public void setRegion(String region) {
         this.region = region;
     }
-
     @JsonProperty("lat")
     public String getLat() {
         return lat;
     }
-
     @JsonProperty("lat")
     public void setLat(String lat) {
         this.lat = lat;
     }
-
     @JsonProperty("lon")
     public String getLon() {
         return lon;
     }
-
     @JsonProperty("lon")
     public void setLon(String lon) {
         this.lon = lon;
     }
-
     @JsonProperty("timezone_id")
     public String getTimezoneId() {
         return timezoneId;
     }
-
     @JsonProperty("timezone_id")
     public void setTimezoneId(String timezoneId) {
         this.timezoneId = timezoneId;
     }
-
     @JsonProperty("localtime")
     public String getLocaltime() {
         return localtime;
     }
-
     @JsonProperty("localtime")
     public void setLocaltime(String localtime) {
         this.localtime = localtime;
     }
-
     @JsonProperty("localtime_epoch")
     public Integer getLocaltimeEpoch() {
         return localtimeEpoch;
     }
-
     @JsonProperty("localtime_epoch")
     public void setLocaltimeEpoch(Integer localtimeEpoch) {
         this.localtimeEpoch = localtimeEpoch;
     }
-
     @JsonProperty("utc_offset")
     public String getUtcOffset() {
         return utcOffset;
