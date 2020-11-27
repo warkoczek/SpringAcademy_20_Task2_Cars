@@ -19,6 +19,7 @@
         <th>Pressure</th>
         <th>Wind</th>
         <th>Cloud Cover</th>
+        <th>Action</th>
     </tr>
     <tr class="center">
         <td th:text="*{location.name}"></td>
@@ -29,6 +30,7 @@
         <td th:text="*{current.getPressure().toString()}"></td>
         <td th:text="*{current.getWindSpeed()}"></td>
         <td th:text="*{current.getCloudcover()}"></td>
+        <td><a th:href="@{/meteo/save}"></a>Save</td>
     </tr>
     </div>
 </table>

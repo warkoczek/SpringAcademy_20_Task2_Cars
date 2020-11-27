@@ -4,15 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Weather;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.WeatherServiceImpl;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.MeteoServiceImpl;
 
 
 @Controller
 @RequestMapping("/meteo")
 public class MeteoController {
-    private final WeatherServiceImpl weatherService;
+    private final MeteoServiceImpl weatherService;
 
-    public MeteoController(WeatherServiceImpl weatherService) {
+    public MeteoController(MeteoServiceImpl weatherService) {
         this.weatherService = weatherService;
     }
 
