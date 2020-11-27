@@ -16,8 +16,12 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
+    @GetMapping("/home")
+    public String home(){
+        return "home/home";
+    }
     @GetMapping
-    public String getWeather(@RequestParam(defaultValue = "Warsaw") String city, Model model){
+    public String getWeather(@RequestParam() String city, Model model){
         Weather weather = weatherService.showWeather(city);
         model.addAttribute("weather", weather);
         return "/weather/weather";
