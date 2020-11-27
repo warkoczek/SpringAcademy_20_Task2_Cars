@@ -12,12 +12,9 @@ import java.time.LocalDateTime;
 
 @Component
 public class MeteoMapper {
-    public MeteoMapper() {
-    }
-    public final Converter<Weather, Meteo> convert(){
-        Converter<Weather, Meteo> myConverter = context -> {
-            Weather weather = context.getSource();
-            Meteo meteo = context.getDestination();
+
+    public final Meteo convertToMeteo(Weather weather){
+            Meteo meteo = new Meteo();
             meteo.setLocation(weather.getLocation().getName());
             meteo.setObservationTime(LocalDateTime.parse(weather.getLocation().getLocaltime()));
             meteo.setTemperature(weather.getCurrent().getTemperature());
@@ -25,9 +22,7 @@ public class MeteoMapper {
             meteo.setWindSpeed(weather.getCurrent().getWindSpeed());
             meteo.setPressure(weather.getCurrent().getPressure());
             meteo.setCloudCover(weather.getCurrent().getCloudcover());
-            return meteo;
-        };
-        return myConverter;
+         return meteo;
     }
 
 
