@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class MeteoDTO {
 
     private String location;
+    private LocalDateTime localTime;
     private LocalDateTime observationTime;
     private Integer temperature;
     private Integer humidity;

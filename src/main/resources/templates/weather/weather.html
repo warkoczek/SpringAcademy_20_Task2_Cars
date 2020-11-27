@@ -30,7 +30,7 @@
         <td th:text="*{current.getPressure().toString()}"></td>
         <td th:text="*{current.getWindSpeed()}"></td>
         <td th:text="*{current.getCloudcover()}"></td>
-        <td><a th:href="@{/meteo/save}"></a>Save</td>
+        <td><a class="btn-btn-primary" th:href="@{meteo/save}">Save</a></td>
     </tr>
     </div>
 </table>

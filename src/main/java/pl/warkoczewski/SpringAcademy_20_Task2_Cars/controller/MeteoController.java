@@ -32,5 +32,9 @@ public class MeteoController {
         model.addAttribute("weather", weather);
         return "/weather/weather";
     }
+    @GetMapping("/save")
+    public String saveMeteo(){
+        return "weather/weather";
+    }
 
 }

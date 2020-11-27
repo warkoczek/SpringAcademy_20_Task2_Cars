@@ -11,8 +11,8 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.Meteo;
 import java.time.LocalDateTime;
 
 @Component
-public class MyMapper {
-    public MyMapper() {
+public class MeteoMapper {
+    public MeteoMapper() {
     }
     public final Converter<Weather, Meteo> convert(){
         Converter<Weather, Meteo> myConverter = context -> {
