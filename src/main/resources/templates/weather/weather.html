@@ -7,7 +7,7 @@
 <body>
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br><br><br>
 <div class="center"><p class="center">Weather</p></div>
-<div th:object="${weather}">
+<div>
 <table class="table table-striped">
     <div class="center">
     <tr class="center">
@@ -19,18 +19,16 @@
         <th>Pressure</th>
         <th>Wind</th>
         <th>Cloud Cover</th>
-        <th>Action</th>
     </tr>
-    <tr class="center">
-        <td th:text="*{location.name}"></td>
-        <td th:text="*{location.getLocaltime()}"></td>
-        <td th:text="*{current.getObservationTime().toString()}"></td>
-        <td th:text="*{current.getTemperature().toString()}"></td>
-        <td th:text="*{current.getHumidity().toString()}"></td>
-        <td th:text="*{current.getPressure().toString()}"></td>
-        <td th:text="*{current.getWindSpeed()}"></td>
-        <td th:text="*{current.getCloudcover()}"></td>
-        <td><a class="btn-btn-primary" th:href="@{meteo/save}">Save</a></td>
+    <tr th:each="meteo : ${meteoDTOS}" class="center">
+        <td th:text="*{meteo.getLocation()}"></td>
+        <td th:text="*{meteo.getLocalTime()}"></td>
+        <td th:text="*{meteo.getObservationTime()}"></td>
+        <td th:text="*{meteo.getTemperature()}"></td>
+        <td th:text="*{meteo.getHumidity()}"></td>
+        <td th:text="*{meteo.getPressure()}"></td>
+        <td th:text="*{meteo.getWindSpeed()}"></td>
+        <td th:text="*{meteo.getCloudCover()}"></td>
     </tr>
     </div>
 </table>
