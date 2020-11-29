@@ -23,5 +23,14 @@ public class NoteController {
     public String processAddingNoteForm(){
         return "notepad/add";
     }
+    @GetMapping("/open")
+    public String displayOpenedNotePage(){
+        return "notepad/opened";
+    }
+    @PostMapping("/open")
+    public String processOpenNoteForm(){
+        return "notepad/opened";
+    }
+
 
 }

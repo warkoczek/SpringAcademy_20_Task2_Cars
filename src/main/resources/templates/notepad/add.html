@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{fragments/head :: headFragment}">
     <meta charset="UTF-8">
     <title>Add Note</title>
@@ -20,6 +21,11 @@
                     <label class="control-label" for="username"
                     >Username</label><input id="username" class="form-control" type="text" th:field="*{username}" required autofocus="autofocus"/>
                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Incorrect username</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="text"
+                    >Text</label><textarea style="height: max-content" id="text" class="form-control" type="text" th:field="*{text}" required autofocus="autofocus"></textarea>
+                    <span th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Incorrect text</span>
                 </div>
             </form>
         </div>
