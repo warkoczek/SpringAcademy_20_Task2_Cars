@@ -1,9 +1,9 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic;
 
 import javax.persistence.*;
 
