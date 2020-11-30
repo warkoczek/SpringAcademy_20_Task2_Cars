@@ -11,4 +11,6 @@ public class Note {
     private String text;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private Topic topic;
 }
