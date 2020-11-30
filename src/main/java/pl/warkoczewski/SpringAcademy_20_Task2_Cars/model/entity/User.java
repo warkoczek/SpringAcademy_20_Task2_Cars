@@ -20,7 +20,7 @@ public class User {
     private String password;
     private String email;
     @OneToMany(mappedBy = "user")
-    private Set<Note> note;
+    private Set<Note> noteSet;
 
     public User() {
     }
