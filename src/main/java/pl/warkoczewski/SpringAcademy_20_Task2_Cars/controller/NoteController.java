@@ -49,19 +49,17 @@ public class NoteController {
         return "notepad/home";
     }
     @GetMapping("/edit/{id}")
-    public ModelAndView displayAddNotePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
+    public String displayAddNotePage(@PathVariable(value = "id") Long id, Model model){
         Optional<NoteDTO> noteDTO = notepadService.findById(id);
         if(noteDTO.isPresent()){
-            modelAndView.addObject("noteDTO", noteDTO.get());
-            modelAndView.addObject("topics", Topic.values());
-            modelAndView.setViewName("notepad/edit");
-            return modelAndView;
+            model.addAttribute("noteDTO", noteDTO.get());
+            model.addAttribute("topics", Topic.values());
+            return "notepad/edit";
         }
-         modelAndView.setViewName("notepad/notes");
-        return modelAndView;
+        return "notepad/notes";
     }
     @PostMapping("/edit")
-    public String processEditingNoteForm(@ModelAttribute(name = "noteDTO") @Valid NoteDTO noteDTO, BindingResult bindingResult, Model model){
+    public String processEditingNoteForm(@ModelAttribute(name = "noteDTO") NoteDTO noteDTO, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             return "notepad/notes";
         }
