@@ -56,6 +56,7 @@
             <tr th:each="note : ${notes}">
                 <td th:text="${note.topic}"></td>
                 <td th:text="${note.text}"></td>
+                <td><a th:href=""></a></td>
             </tr>
             </tbody>
         </table>
