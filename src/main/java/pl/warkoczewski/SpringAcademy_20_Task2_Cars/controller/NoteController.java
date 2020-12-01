@@ -49,7 +49,7 @@ public class NoteController {
         return "notepad/home";
     }
     @GetMapping("/edit/{id}")
-    public ModelAndView displayAddNotePage(@PathVariable(name = "id") Long id, ModelAndView modelAndView){
+    public ModelAndView displayAddNotePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
         Optional<Note> note = notepadService.findById(id);
         if(note.isPresent()){
             modelAndView.addObject("noteDTO", note.get());
