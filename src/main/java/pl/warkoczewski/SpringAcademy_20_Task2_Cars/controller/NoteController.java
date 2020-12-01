@@ -2,6 +2,7 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.NoteDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.NotepadServiceImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.ViewMessage;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/notepad")
@@ -29,7 +32,10 @@ public class NoteController {
         return "notepad/add";
     }
     @PostMapping("/add")
-    public String processAddingNoteForm(@ModelAttribute(name = "noteDTO") NoteDTO noteDTO, Model model){
+    public String processAddingNoteForm(@ModelAttribute(name = "noteDTO") @Valid NoteDTO noteDTO, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            return "notepad/add";
+        }
         notepadService.addNote(noteDTO);
         model.addAttribute("message", ViewMessage.NOTE_ADDED);
         return "notepad/home";
