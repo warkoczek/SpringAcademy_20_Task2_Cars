@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.NoteDTO;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.NotepadServiceImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.ViewMessage;
 
@@ -29,6 +30,7 @@ public class NoteController {
     @GetMapping("/add")
     public String displayAddNotePage(Model model){
         model.addAttribute("noteDTO", new NoteDTO());
+        model.addAttribute("topic", Topic.values());
         return "notepad/add";
     }
     @PostMapping("/add")
