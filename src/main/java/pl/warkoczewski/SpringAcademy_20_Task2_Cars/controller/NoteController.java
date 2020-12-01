@@ -1,9 +1,11 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
+import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.NoteDTO;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.Note;
@@ -47,15 +49,21 @@ public class NoteController {
         return "notepad/home";
     }
     @GetMapping("/edit/{id}")
-    public String displayAddNotePage(@PathVariable(name = "id") Long id, Model model){
-        notepadService.findById(id).ifPresent(note1 -> model.addAttribute("noteDTO", note1));
-        model.addAttribute("topics", Topic.values());
-        return "notepad/edit";
+    public ModelAndView displayAddNotePage(@PathVariable(name = "id") Long id, ModelAndView modelAndView){
+        Optional<Note> note = notepadService.findById(id);
+        if(note.isPresent()){
+            modelAndView.addObject("noteDTO", note.get());
+            modelAndView.addObject("topics", Topic.values());
+            modelAndView.setViewName("notepad/edit");
+            return modelAndView;
+        }
+         modelAndView.setViewName("notepad/notes");
+        return modelAndView;
     }
     @PostMapping("/edit")
     public String processEditingNoteForm(@ModelAttribute(name = "noteDTO") @Valid NoteDTO noteDTO, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
-            return "notepad/edit";
+            return "notepad/notes";
         }
         notepadService.editNote(noteDTO);
         model.addAttribute("message", ViewMessage.NOTE_ADDED);
