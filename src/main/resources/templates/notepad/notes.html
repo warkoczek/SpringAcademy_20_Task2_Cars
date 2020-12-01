@@ -21,7 +21,8 @@
             <tr th:each="note : ${notes}">
                 <td th:text="${note.topic}"></td>
                 <td th:text="${note.text}"></td>
-                <td><a href="@{notepad/edit/{id}(id=${note.id})}">Edit</a></td>
+                <td><a style="color: darkolivegreen" th:href="@{notepad/edit/{id}(id=${note.id})}" class="btn-btn-primary">Edit</a>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -50,7 +50,7 @@ public class NoteController {
     public String displayAddNotePage(@PathVariable(name = "id") Long id, Model model){
         notepadService.findById(id).ifPresent(note1 -> model.addAttribute("noteDTO", note1));
         model.addAttribute("topics", Topic.values());
-        return "notepad/add";
+        return "notepad/edit";
     }
     @PostMapping("/edit")
     public String processEditingNoteForm(@ModelAttribute(name = "noteDTO") @Valid NoteDTO noteDTO, BindingResult bindingResult, Model model){
