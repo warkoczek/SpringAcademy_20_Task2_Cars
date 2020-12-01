@@ -33,7 +33,7 @@ public class NotepadServiceImpl implements NotepadService {
         , new User("czula", "333w", "czula@gmail.com"));
         userRepository.saveAll(users);
         List<Note> notes = Arrays.asList(new Note("Buy your sis a birthday present", Topic.REMINDER, users.get(0))
-                , new Note("I am Sagittarius", Topic.HOROSCOPE, users.get(1)));
+                , new Note("I am Sagittarius!", Topic.HOROSCOPE, users.get(1)));
         noteRepository.saveAll(notes);
     }
     @Override
