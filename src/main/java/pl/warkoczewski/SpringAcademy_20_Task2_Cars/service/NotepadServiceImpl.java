@@ -13,6 +13,7 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,17 +35,24 @@ public class NotepadServiceImpl implements NotepadService {
         List<Note> notes = Arrays.asList(new Note("Buy your sis a birthday present", Topic.REMINDER, users.get(0))
                 , new Note("I am Sagittarius", Topic.HOROSCOPE, users.get(1)));
         noteRepository.saveAll(notes);
-
+    }
+    @Override
+    public Optional<Note> findById(Long id) {
+        return noteRepository.findById(id);
+    }
+    @Override
+    public List<NoteDTO> findAll() {
+        return noteRepository.findAll().stream()
+                .map(note -> modelMapper.map(note, NoteDTO.class)).collect(Collectors.toList());
     }
     @Override
     public void addNote(NoteDTO noteDTO) {
         userRepository.findById(noteDTO.getUsername())
                 .ifPresent(value -> noteRepository.save(new Note(noteDTO.getText(), noteDTO.getTopic(), value)));
     }
-
     @Override
-    public List<NoteDTO> findAll() {
-        return noteRepository.findAll().stream()
-                .map(note -> modelMapper.map(note, NoteDTO.class)).collect(Collectors.toList());
+    public Note editNote(NoteDTO noteDTO) {
+        noteRepository.deleteById(noteDTO.getId());
+        return noteRepository.save(modelMapper.map(noteDTO, Note.class));
     }
 }

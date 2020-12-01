@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: headFragment}">
+    <meta charset="UTF-8">
+    <title>Notes</title>
+</head>
+<body>
+<nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(notes)}">
+        <h2>Notes</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Text</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="note : ${notes}">
+                <td th:text="${note.topic}"></td>
+                <td th:text="${note.text}"></td>
+                <td><a href="@{notepad/edit/{id}(id=${note.id})}">Edit</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div><br>
+
+
+</body>
+</html>

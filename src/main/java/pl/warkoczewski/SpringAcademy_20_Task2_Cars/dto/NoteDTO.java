@@ -9,9 +9,10 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic;
 @AllArgsConstructor
 @Data
 public class NoteDTO {
-    private String username;
+    private Long id;
     private String text;
     private Topic topic;
+    private String username;
 
 
 }

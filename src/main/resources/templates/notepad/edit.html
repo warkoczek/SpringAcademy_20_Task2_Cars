@@ -16,7 +16,7 @@
                 <div class="alert alert-info">Your note successfully saved!!!!</div>
             </div>-->
             <h1>Take a note</h1>
-            <form th:action="@{/notepad/add}" method="post" th:object="${noteDTO}">
+            <form th:action="@{/notepad/edit/{id}}" method="post" th:object="${noteDTO}">
                 <div class="form-group">
                     <label class="control-label" for="username"
                     >Username</label><input id="username" class="form-control" type="text" th:field="*{username}" required autofocus="autofocus"/>
@@ -26,8 +26,8 @@
                     <label class="control-label" th:for="topic">Topic</label>
                     <!--/*@thymesVar id="topic" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic"*/-->
                     <select th:field="*{topic}">
-                    <!--/*@thymesVar id="values" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic"*/-->
-                    <option th:each="topicType : ${T(pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic).values()}" th:text="${topicType}" th:value="${topicType}"></option>
+                        <!--/*@thymesVar id="values" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic"*/-->
+                        <option th:each="topicType : ${T(pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic).values()}" th:text="${topicType}" th:value="${topicType}"></option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -45,4 +45,3 @@
 
 </body>
 </html>
-
