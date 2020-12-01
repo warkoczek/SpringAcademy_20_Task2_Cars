@@ -2,7 +2,6 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic;
 
 import javax.persistence.*;
@@ -16,6 +15,7 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
+    @Enumerated(EnumType.STRING)
     private Topic topic;
     @ManyToOne
     private User user;

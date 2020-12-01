@@ -30,7 +30,7 @@ public class NoteController {
     @GetMapping("/add")
     public String displayAddNotePage(Model model){
         model.addAttribute("noteDTO", new NoteDTO());
-        model.addAttribute("topic", Topic.values());
+        model.addAttribute("topics", Topic.values());
         return "notepad/add";
     }
     @PostMapping("/add")

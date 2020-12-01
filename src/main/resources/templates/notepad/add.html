@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label class="control-label" th:for="topic">Topic</label>
                     <!--/*@thymesVar id="topic" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic"*/-->
-                    <select th:field="${topic}">
+                    <select th:field="*{topic}">
                     <!--/*@thymesVar id="values" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic"*/-->
                     <option th:each="topicType : ${T(pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Topic).values()}" th:text="${topicType}" th:value="${topicType}"></option>
                     </select>
