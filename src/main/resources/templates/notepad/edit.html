@@ -15,7 +15,7 @@
             <div th:if="${param.success}">
                 <div class="alert alert-info">Your note successfully saved!!!!</div>
             </div>-->
-            <h1>Take a note</h1>
+            <h1>Edit note</h1>
             <form th:action="@{/notepad/edit}" method="post" th:object="${noteDTO}">
                 <div class="form-group">
                     <label class="control-label" for="username"

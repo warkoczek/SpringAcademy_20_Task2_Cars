@@ -9,7 +9,7 @@ public interface NotepadService {
    void addNote(NoteDTO note);
    List<NoteDTO> findAll();
 
-   Optional<Note> findById(Long id);
+   Optional<NoteDTO> findById(Long id);
 
    Note editNote(NoteDTO noteDTO);
 }

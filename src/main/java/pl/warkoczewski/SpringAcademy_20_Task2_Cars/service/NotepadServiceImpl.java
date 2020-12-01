@@ -37,8 +37,12 @@ public class NotepadServiceImpl implements NotepadService {
         noteRepository.saveAll(notes);
     }
     @Override
-    public Optional<Note> findById(Long id) {
-        return noteRepository.findById(id);
+    public Optional<NoteDTO> findById(Long id) {
+        Optional<Note> note = noteRepository.findById(id);
+        if(note.isPresent()){
+            modelMapper.map(note.get(), NoteDTO.class);
+        }
+        return Optional.empty();
     }
     @Override
     public List<NoteDTO> findAll() {
