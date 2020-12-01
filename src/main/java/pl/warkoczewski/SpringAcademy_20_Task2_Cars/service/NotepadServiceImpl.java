@@ -39,10 +39,7 @@ public class NotepadServiceImpl implements NotepadService {
     @Override
     public Optional<NoteDTO> findById(Long id) {
         Optional<Note> note = noteRepository.findById(id);
-        if(note.isPresent()){
-            modelMapper.map(note.get(), NoteDTO.class);
-        }
-        return Optional.empty();
+        return note.map(value -> modelMapper.map(value, NoteDTO.class));
     }
     @Override
     public List<NoteDTO> findAll() {
