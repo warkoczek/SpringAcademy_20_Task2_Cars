@@ -13,6 +13,7 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NotepadServiceImpl implements NotepadService {
@@ -39,5 +40,11 @@ public class NotepadServiceImpl implements NotepadService {
     public void addNote(NoteDTO noteDTO) {
         userRepository.findById(noteDTO.getUsername())
                 .ifPresent(value -> noteRepository.save(new Note(noteDTO.getText(), noteDTO.getTopic(), value)));
+    }
+
+    @Override
+    public List<NoteDTO> findAll() {
+        return noteRepository.findAll().stream()
+                .map(note -> modelMapper.map(note, NoteDTO.class)).collect(Collectors.toList());
     }
 }

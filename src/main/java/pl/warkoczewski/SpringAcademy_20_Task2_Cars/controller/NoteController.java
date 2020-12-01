@@ -31,6 +31,7 @@ public class NoteController {
     public String displayAddNotePage(Model model){
         model.addAttribute("noteDTO", new NoteDTO());
         model.addAttribute("topics", Topic.values());
+        model.addAttribute("notes", notepadService.findAll());
         return "notepad/add";
     }
     @PostMapping("/add")
