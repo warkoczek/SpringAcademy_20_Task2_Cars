@@ -5,6 +5,6 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.User;
 import java.util.List;
 
 public interface FileReader {
-    List<User> read();
+    List<User> read(String path);
 
 }
