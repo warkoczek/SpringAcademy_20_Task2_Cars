@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface FileReader {
     List<User> read(String path);
+    //List<User> readStream(String path);
 
 }
