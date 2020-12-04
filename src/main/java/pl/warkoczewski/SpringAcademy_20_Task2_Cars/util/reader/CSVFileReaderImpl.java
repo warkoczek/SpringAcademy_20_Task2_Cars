@@ -18,10 +18,12 @@ public class CSVFileReaderImpl implements FileReader {
         try(BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(path))) {
             String[] headers = bufferedReader.readLine().split(",");
             String record;
-            while((record = bufferedReader.readLine()) != null){
+            int count = 501;
+            while((record = bufferedReader.readLine()) != null && count > 1){
                 String[] tokens = record.split(",");
                 User user = createUser(headers, tokens);
                 users.add(user);
+                count--;
             }
         }catch(FileNotFoundException ex){
             ex.printStackTrace();
@@ -59,10 +61,12 @@ public class CSVFileReaderImpl implements FileReader {
         try(BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(path))) {
             String[] headers = bufferedReader.readLine().split(",");
             String record;
-            while((record = bufferedReader.readLine()) != null){
+            int count = 501;
+            while((record = bufferedReader.readLine()) != null && count > 1){
                 String[] tokens = record.split(",");
                 pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.document.User user = createUserForMongo(headers, tokens);
                 users.add(user);
+                count--;
             }
         }catch(FileNotFoundException ex){
             ex.printStackTrace();
