@@ -5,6 +5,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.User;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.UserServiceImpl;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.aspect.anotation.Timed;
 
 import java.util.List;
 
@@ -16,7 +17,9 @@ public class MyApp {
     public MyApp(UserServiceImpl userService) {
         this.userService = userService;
     }
+
     @EventListener(ApplicationReadyEvent.class)
+    @Timed
     public List<User> addUsersToMySQLDB(){
         return userService.addAllUsers(FILE_PATH);
     }
