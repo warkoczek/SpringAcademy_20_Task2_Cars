@@ -1,4 +1,4 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.aspect.anotation;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.aspect.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

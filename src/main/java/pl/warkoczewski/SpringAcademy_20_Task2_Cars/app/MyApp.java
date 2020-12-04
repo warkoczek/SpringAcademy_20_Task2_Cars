@@ -5,7 +5,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.User;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.UserServiceImpl;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.aspect.anotation.Timed;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.aspect.annotation.Timed;
 
 import java.util.List;
 
