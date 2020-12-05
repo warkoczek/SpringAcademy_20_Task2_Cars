@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface MongoDBUserService {
     List<User> addAllUsers(String path);
+    List<User> findAll();
 }

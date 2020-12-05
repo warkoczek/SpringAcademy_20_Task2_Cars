@@ -13,17 +13,15 @@ import java.util.List;
 public class CSVFileReaderImpl implements FileReader {
 
     @Override
-    public List<User> read(String path) {
+    public List<User> readForSQL(String path) {
         List<User> users = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(path))) {
             String[] headers = bufferedReader.readLine().split(",");
             String record;
-            int count = 501;
-            while((record = bufferedReader.readLine()) != null && count > 1){
+            while((record = bufferedReader.readLine()) != null){
                 String[] tokens = record.split(",");
-                User user = createUser(headers, tokens);
+                User user = createUserForSQL(headers, tokens);
                 users.add(user);
-                count--;
             }
         }catch(FileNotFoundException ex){
             ex.printStackTrace();
@@ -33,7 +31,7 @@ public class CSVFileReaderImpl implements FileReader {
 
         return users;
     }
-    private User createUser(String[] headers, String[] tokens) {
+    private User createUserForSQL(String[] headers, String[] tokens) {
         User user = new User();
         for(int h=1; h < headers.length; h++){
             if("first_name".equals(headers[h])){
@@ -61,12 +59,10 @@ public class CSVFileReaderImpl implements FileReader {
         try(BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(path))) {
             String[] headers = bufferedReader.readLine().split(",");
             String record;
-            int count = 501;
-            while((record = bufferedReader.readLine()) != null && count > 1){
+            while((record = bufferedReader.readLine()) != null){
                 String[] tokens = record.split(",");
                 pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.document.User user = createUserForMongo(headers, tokens);
                 users.add(user);
-                count--;
             }
         }catch(FileNotFoundException ex){
             ex.printStackTrace();
