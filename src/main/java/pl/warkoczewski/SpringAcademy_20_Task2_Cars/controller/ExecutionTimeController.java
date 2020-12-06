@@ -1,6 +1,7 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.MongoDBServiceImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.MySQLUserServiceImpl;
@@ -16,7 +17,7 @@ public class ExecutionTimeController {
     }
 
     @GetMapping("/executionTime")
-    public String displayExecutionTimePage(){
+    public String displayExecutionTimePage(Model model){
         return "executionTime";
     }
 }
