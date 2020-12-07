@@ -8,20 +8,23 @@
 </head>
 <body>
 <div class="container">
-    <div >
-        <h2>Method Execution Time</h2>
+    <div th:if="${not #lists.isEmpty(methods)}" >
+        <h2>Method Execution Time(1000 records)</h2>
         <table class="table table-striped">
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Availability</th>
-                <th>Image URL</th>
+                <th>Method</th>
+                <th>Sample 1</th>
+                <th>Sample 2</th>
+                <th>Sample 3</th>
+                <th>Sample 4</th>
             </tr>
-            <tr th:each="farm : ${allFarms}">
-                <td th:text="${farm.name}"></td>
-                <td th:text="${farm.description}"></td>
-                <td th:if="${farm.available}">Available</td>
-                <td th:unless="${farm.available}">Not Available</td>
+            <tr th:each="method : ${methods}">
+                <td th:text="${method.getName()}"></td>
+                <td th:text="${method.getSample1()}"></td>
+                <td th:text="${method.getSample2()}"></td>
+                <td th:text="${method.getSample3()}"></td>
+                <td th:text="${method.getSample4()}"></td>
+
 
                 <td></td>
             </tr>

@@ -1,4 +1,4 @@
-package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model;
+package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity;
 
 import lombok.Data;
 

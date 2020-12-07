@@ -2,8 +2,11 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.document;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Id;
+
 @Document
 public class User {
+    @Id
     private String id;
     private String first_name;
     private String last_name;

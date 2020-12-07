@@ -3,7 +3,7 @@ package pl.warkoczewski.SpringAcademy_20_Task2_Cars.app;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.User;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.User;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.MongoDBServiceImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.MySQLUserServiceImpl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.aspect.annotation.Timed;
@@ -20,7 +20,7 @@ public class MyApp {
         this.sqlUserService = sqlUserService;
         this.mongoDBService = mongoDBService;
     }
-    /*
+
     @EventListener(ApplicationReadyEvent.class)
     @Timed
     public List<User> addUsersToMySQLDB(){
@@ -30,7 +30,7 @@ public class MyApp {
     @Timed
     public List<pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.document.User> addUsersToMongoDB(){
         return mongoDBService.addAllUsers(FILE_PATH);
-    }*/
+    }
 
     @EventListener(ApplicationReadyEvent.class)
     @Timed

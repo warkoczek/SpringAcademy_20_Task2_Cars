@@ -1,7 +1,7 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.util.reader;
 
 import org.springframework.stereotype.Component;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.User;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.User;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
