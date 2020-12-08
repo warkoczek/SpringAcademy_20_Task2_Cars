@@ -61,12 +61,12 @@ public class NoteController {
         return "notepad/notes";
     }
     @PostMapping("/edit")
-    public String processEditingNoteForm(@ModelAttribute(name = "noteDTO") NoteDTO noteDTO, BindingResult bindingResult, Model model){
+    public String processEditingNoteForm(@ModelAttribute(name = "noteDTO") @Valid NoteDTO noteDTO, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
-            return "notepad/notes";
+            return "notepad/add";
         }
         notepadService.editNote(noteDTO);
-        model.addAttribute("message", ViewMessage.NOTE_ADDED);
+        model.addAttribute("message", ViewMessage.NOTE_EDITED);
         return "notepad/home";
     }
     @GetMapping("/open")
