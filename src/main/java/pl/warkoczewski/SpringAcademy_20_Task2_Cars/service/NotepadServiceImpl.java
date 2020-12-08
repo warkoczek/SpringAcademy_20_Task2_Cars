@@ -52,8 +52,14 @@ public class NotepadServiceImpl implements NotepadService {
                 .ifPresent(value -> noteRepository.save(new Note(noteDTO.getText(), noteDTO.getTopic(), value)));
     }
     @Override
-    public Note editNote(NoteDTO noteDTO) {
-        noteRepository.deleteById(noteDTO.getId());
-        return noteRepository.save(modelMapper.map(noteDTO, Note.class));
+    public void editNote(NoteDTO noteDTO) {
+        noteRepository.findById(noteDTO.getId()).ifPresent(note ->  updateAndSave(noteDTO, note));
     }
+
+    private Note updateAndSave(NoteDTO noteDTO, Note note) {
+        note.setTopic(noteDTO.getTopic());
+        note.setText(noteDTO.getText());
+         return noteRepository.save(note);
+    }
+
 }

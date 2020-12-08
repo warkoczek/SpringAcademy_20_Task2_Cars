@@ -11,5 +11,5 @@ public interface NotepadService {
 
    Optional<NoteDTO> findById(Long id);
 
-   Note editNote(NoteDTO noteDTO);
+   void editNote(NoteDTO noteDTO);
 }
