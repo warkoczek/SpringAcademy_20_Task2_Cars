@@ -54,7 +54,7 @@ public class NoteController {
         Optional<NoteDTO> noteDTO = notepadService.findById(id);
         if(noteDTO.isPresent()){
             model.addAttribute("noteDTO", noteDTO.get());
-            model.addAttribute("update", true);
+            model.addAttribute("updateNote", true);
             model.addAttribute("topics", Topic.values());
             return "notepad/add";
         }
