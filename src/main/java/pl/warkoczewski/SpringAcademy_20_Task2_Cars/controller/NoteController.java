@@ -37,6 +37,7 @@ public class NoteController {
     public String displayAddNotePage(Model model){
         model.addAttribute("noteDTO", new NoteDTO());
         model.addAttribute("topics", Topic.values());
+        model.addAttribute("updateNote", false);
         return "notepad/add";
     }
     @PostMapping("/add")
@@ -53,8 +54,9 @@ public class NoteController {
         Optional<NoteDTO> noteDTO = notepadService.findById(id);
         if(noteDTO.isPresent()){
             model.addAttribute("noteDTO", noteDTO.get());
+            model.addAttribute("update", true);
             model.addAttribute("topics", Topic.values());
-            return "notepad/edit";
+            return "notepad/add";
         }
         return "notepad/notes";
     }
