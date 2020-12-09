@@ -85,11 +85,9 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean removeCar(Long id) {
-        Optional<Car> toDelete = cars.stream().filter(car -> car.getId().equals(id)).findFirst();
-        if(toDelete.isPresent()){
-            cars.remove(toDelete.get());
-            return true;
-        }
+        Optional<Car> first = cars.stream().filter(car -> car.getId().equals(id)).findFirst();
+        first.ifPresent(car -> cars.remove(car));
         return false;
+
     }
 }

@@ -107,13 +107,16 @@ public class CarController {
     //delete element
     @GetMapping("/delete/{id}")
     public String deleteCar(@PathVariable(value = "id") Long id, Model model){
-        boolean deleted = carService.deleteCar(id);
+        carService.deleteCar(id);
+        model.addAttribute("message", "Deleted successfully");
+        return "redirect:/cars";
+        /*boolean deleted = carService.deleteCar(id);
         if(deleted){
             model.addAttribute("message", "Deleted successfully!");
             return "/car/deleted";
         }
         model.addAttribute("message", "I am sorry, could not delete");
-        return "/car/deleted";
+        return "/car/deleted";*/
 
     }
 }
