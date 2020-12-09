@@ -12,6 +12,7 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.NoteRepository;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.repository.UserRepository;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
