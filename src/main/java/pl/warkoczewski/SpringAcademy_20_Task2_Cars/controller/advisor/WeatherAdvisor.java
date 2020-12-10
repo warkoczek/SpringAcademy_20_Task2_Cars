@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.exception.WeatherDataNotFoundException;
 
-@ControllerAdvice(annotations = Controller.class)
+@ControllerAdvice
 @Slf4j
 public class WeatherAdvisor {
     @ExceptionHandler(WeatherDataNotFoundException.class)
