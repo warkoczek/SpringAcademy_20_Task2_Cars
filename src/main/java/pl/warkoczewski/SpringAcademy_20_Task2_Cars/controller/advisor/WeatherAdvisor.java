@@ -9,9 +9,9 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.exception.WeatherDataNotFound
 
 @ControllerAdvice(annotations = Controller.class)
 @Slf4j
-public class GlobalExceptionHandler {
-    @ExceptionHandler(RuntimeException.class)
-    public String getErrorPage(RuntimeException exception, Model model){
+public class WeatherAdvisor {
+    @ExceptionHandler(WeatherDataNotFoundException.class)
+    public String getErrorPage(WeatherDataNotFoundException exception, Model model){
         log.warn("An exception was caught: {}", exception.getMessage(), exception);
         model.addAttribute("exception", exception.getMessage());
         return "errors/error";
