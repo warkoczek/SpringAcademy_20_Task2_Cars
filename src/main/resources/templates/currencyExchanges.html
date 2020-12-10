@@ -9,6 +9,7 @@
 <h1 th:text="${base}"></h1>
 <div class="container" th:object="${exchanges}">
     <div th:if="${not #lists.isEmpty(exchanges)}">
+        <div th:unless="${not #lists.isEmpty(exchanges)}"> I am sorry, data retrieving error has occured</div>
         <table class="table table-striped">
             <tr>
                 <th>Currency</th>
