@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.warkoczewski.SpringAcademy_20_Task2_Cars.exception.WeatherDataNotFoundException;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Weather;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.WeatherServiceImpl;
 
@@ -21,11 +22,13 @@ public class WeatherController {
 
     @GetMapping
     public String getWeather(@RequestParam(defaultValue = "Warsaw") String city, Model model){
-            model.addAttribute("weather", weatherService.showWeather(city));
+        Weather weather = weatherService.showWeather(city);
+        model.addAttribute("weather", weather);
         return "/weather/weather";
     }
-    @PostMapping()
+    @PostMapping
     public String getWeatherForm(@ModelAttribute(name = "city") String city, Model model){
+        Weather weather = weatherService.showWeather(city);
         model.addAttribute("weather", weatherService.showWeather(city));
         return "/weather/weather";
     }
