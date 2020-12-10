@@ -16,6 +16,7 @@
         <th>Pressure</th>
     </tr>
     <tr class="center">
+        <p th:text="${message}" ></p>
         <td th:text="*{location.name.toString()}"></td>
         <td th:text="*{current.getObservationTime().toString()}"></td>
         <td th:text="*{current.getTemperature().toString()}"></td>
