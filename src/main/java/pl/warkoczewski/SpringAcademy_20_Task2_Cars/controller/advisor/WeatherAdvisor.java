@@ -17,7 +17,7 @@ public class WeatherAdvisor {
     public ModelAndView getErrorPage(WeatherDataNotFoundException exception){
         ModelAndView modelAndView = new ModelAndView();
         log.warn("An exception was caught: {}", exception.getMessage(), exception);
-        modelAndView.setViewName("/errors/error");
+        modelAndView.setViewName("error");
         modelAndView.addObject("exception", exception.getMessage());
         return modelAndView;
     }
