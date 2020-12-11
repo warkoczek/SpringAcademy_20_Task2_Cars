@@ -22,11 +22,7 @@ public class MovieController {
 
     @GetMapping(produces = "Application/json")
     public ResponseEntity<List<MovieDTO>> showMovies(){
-        List<MovieDTO> movies = movieService.showMovies();
-        if(movies.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(movies, HttpStatus.OK);
+        return new ResponseEntity<>(movieService.showMovies(), HttpStatus.OK);
     }
     @PostMapping(consumes = "Application/json")
     public ResponseEntity<Movie> addMovie(@RequestBody @Valid MovieDTO movieDTO){
