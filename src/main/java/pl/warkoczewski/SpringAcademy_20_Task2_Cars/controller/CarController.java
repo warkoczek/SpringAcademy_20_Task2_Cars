@@ -29,6 +29,7 @@ public class CarController {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
     //get elements by id
     @GetMapping("/car/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long id){
