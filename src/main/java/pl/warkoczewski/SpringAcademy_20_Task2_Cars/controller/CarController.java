@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.CarDTO;
-import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Car;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Color;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.Range;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.service.CarServiceImpl;
