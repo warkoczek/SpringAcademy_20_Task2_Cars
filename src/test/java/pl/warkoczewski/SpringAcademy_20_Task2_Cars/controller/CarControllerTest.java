@@ -1,5 +1,6 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.controller;
 
+import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,10 @@ class CarControllerTest {
     }
 
     @Test
-    void getCarById() {
+    void getCarById_Should_Return_Car_Model_Volkswagen_For_Id_2() throws Exception {
+        mockMvc.perform(get("/cars/car/{id}", 2).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.model", Is.is("Clio")));
     }
 
     @Test
