@@ -53,7 +53,7 @@ public class CarController {
     public ResponseEntity addCar(@RequestBody Car car){
         boolean added = carService.createCar(car);
         if(added){
-            return new ResponseEntity(HttpStatus.CREATED);
+            return new ResponseEntity(true, HttpStatus.CREATED);
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
