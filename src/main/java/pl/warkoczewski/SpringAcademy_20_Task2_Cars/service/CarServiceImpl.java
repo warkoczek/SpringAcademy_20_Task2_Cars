@@ -41,8 +41,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Optional<Car> patchUpdate(Long id, String mark, String model, String color) {
-        return carRepository.patchUpdate(id, mark, model, color);
+    public Optional<Car> patchUpdate(Car car) {
+        return carRepository.patchUpdate(car.getId(), car.getMark(), car.getModel(), car.getColor().name());
     }
 
     @Override

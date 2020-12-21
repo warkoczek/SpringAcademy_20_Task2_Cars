@@ -23,6 +23,7 @@ public class CarRepositoryImpl implements CarRepository {
         cars.add(new Car(1l, "Volkswagen", "Golf", Color.BLACK));
         cars.add(new Car(2l, "Renault", "Clio", Color.SILVER));
         cars.add(new Car(3l, "Fiat", "Panda", Color.RED));
+        cars.add(new Car(4l, "Fiat", "125p", Color.GREEN));
     }
 
     @Override

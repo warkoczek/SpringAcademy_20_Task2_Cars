@@ -16,4 +16,8 @@ public class Car {
         this.model = model;
         this.color = color;
     }
+    public Car(Long id, String mark){
+        this.id=id;
+        this.mark=mark;
+    }
 }

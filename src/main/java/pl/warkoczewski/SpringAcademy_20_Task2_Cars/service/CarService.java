@@ -12,6 +12,6 @@ public interface CarService {
     List<Car> showCarsByColor(Color color);
     boolean createCar(Car car);
     boolean updateCar(Car car);
-    Optional<Car> patchUpdate(Long id, String mark, String model, String color);
+    Optional<Car> patchUpdate(Car car);
     boolean deleteCar(Long id);
 }

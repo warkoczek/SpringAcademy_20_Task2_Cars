@@ -72,11 +72,10 @@ public class CarController {
             , @RequestParam(value = "mark", required = false) String mark
             , @RequestParam(value = "model", required = false) String model
             , @RequestParam(value = "color", required = false) String color){
-        Optional<Car> updatedCar = carService.patchUpdate(id, mark, model, color);
-        if(updatedCar.isPresent()){
-            return new ResponseEntity<>(updatedCar.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        Car car = new Car(id, mark, model, Color.valueOf(color));
+        return carService.patchUpdate(car)
+                .map(car1 -> new ResponseEntity<>(car1, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     //delete element
     @DeleteMapping("/delete/{id}")
