@@ -28,12 +28,10 @@ class CarControllerTest {
     ObjectMapper objectMapper = new ObjectMapper();
     @Test
     void getCars_Should_Return_List_Size_4() throws Exception {
-        //given
         mockMvc.perform(get("/cars").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(4)));
-        //when
-        //then
+
     }
     @Test
     void getCarById_Should_Return_Car_Model_Volkswagen_For_Id_2() throws Exception {
