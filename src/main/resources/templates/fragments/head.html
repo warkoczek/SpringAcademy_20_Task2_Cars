@@ -27,11 +27,11 @@
                     class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" th:href="@{/face/detector}">Detector</a>
-            <a><form th:action="@{/notepad/open}" method="post">
+            <a><form th:action="@{/face/detector}" method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="id" placeholder="My note by id">
+                    <input type="text" class="form-control" name="id" placeholder="Image URL">
                     <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default">Open
+                        <button type="submit" class="btn btn-default">Detect
                             <i class="glyphicon glyphicon-search" style="color: green"></i></button><br><br>
                     </div>
                 </div>
