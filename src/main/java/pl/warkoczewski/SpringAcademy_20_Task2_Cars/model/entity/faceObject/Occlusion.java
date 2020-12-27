@@ -17,7 +17,6 @@ import lombok.ToString;
     "eyeOccluded",
     "mouthOccluded"
 })
-@ToString
 public class Occlusion {
 
     @JsonProperty("foreheadOccluded")
@@ -69,4 +68,13 @@ public class Occlusion {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Occlusion{" +
+                "foreheadOccluded=" + foreheadOccluded +
+                ", eyeOccluded=" + eyeOccluded +
+                ", mouthOccluded=" + mouthOccluded +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

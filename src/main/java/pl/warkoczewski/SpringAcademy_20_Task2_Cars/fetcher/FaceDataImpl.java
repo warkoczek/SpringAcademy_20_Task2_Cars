@@ -12,19 +12,20 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.ImageUrl;
 
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.faceObject.FaceObject;
 
+import java.util.Objects;
 import java.util.stream.Stream;
 
 @Controller
 public class FaceDataImpl implements FaceData{
     private final static String  FACE_API_URL = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age, gender, smile&recognitionModel=recognition_01&returnRecognitionModel=false&detectionModel=detection_01";
     private final static String IMAGE_URL = "https://scontent-frx5-1.xx.fbcdn.net/v/t31.0-8/883459_10151467534867696_473521144_o.jpg?_nc_cat=105&ccb=2&_nc_sid=2c4854&_nc_ohc=vEAkuK7yntAAX9VYMH3&_nc_ht=scontent-frx5-1.xx&oh=79faf689fd7ef89a1e84cbf5ac750b62&oe=600E6F17";
-    @EventListener(ApplicationReadyEvent.class)
+
     @Override
-    public void getFaceData() {
+    public FaceObject[] getFaceData() {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<FaceObject[]> exchange = restTemplate.exchange(FACE_API_URL, HttpMethod.POST
                 , getEntity(IMAGE_URL), FaceObject[].class);
-        Stream.of(exchange).forEach(System.out::println);
+        return exchange.getBody();
     }
 
     private HttpEntity<ImageUrl> getEntity(String url) {

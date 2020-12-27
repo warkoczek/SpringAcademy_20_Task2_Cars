@@ -16,7 +16,6 @@ import lombok.ToString;
     "blurLevel",
     "value"
 })
-@ToString
 public class Blur {
 
     @JsonProperty("blurLevel")
@@ -56,4 +55,12 @@ public class Blur {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Blur{" +
+                "blurLevel='" + blurLevel + '\'' +
+                ", value=" + value +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

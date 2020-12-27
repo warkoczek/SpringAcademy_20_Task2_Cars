@@ -17,7 +17,6 @@ import lombok.ToString;
     "roll",
     "yaw"
 })
-@ToString
 public class HeadPose {
 
     @JsonProperty("pitch")
@@ -69,4 +68,13 @@ public class HeadPose {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "HeadPose{" +
+                "pitch=" + pitch +
+                ", roll=" + roll +
+                ", yaw=" + yaw +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

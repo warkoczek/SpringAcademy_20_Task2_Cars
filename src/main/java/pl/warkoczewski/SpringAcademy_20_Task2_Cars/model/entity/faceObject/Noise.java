@@ -16,7 +16,6 @@ import lombok.ToString;
     "noiseLevel",
     "value"
 })
-@ToString
 public class Noise {
 
     @JsonProperty("noiseLevel")
@@ -56,4 +55,12 @@ public class Noise {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Noise{" +
+                "noiseLevel='" + noiseLevel + '\'' +
+                ", value=" + value +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

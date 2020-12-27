@@ -17,7 +17,6 @@ import lombok.ToString;
     "beard",
     "sideburns"
 })
-@ToString
 public class FacialHair {
 
     @JsonProperty("moustache")
@@ -69,4 +68,13 @@ public class FacialHair {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "FacialHair{" +
+                "moustache=" + moustache +
+                ", beard=" + beard +
+                ", sideburns=" + sideburns +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

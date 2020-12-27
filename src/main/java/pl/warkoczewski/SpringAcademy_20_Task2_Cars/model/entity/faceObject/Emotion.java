@@ -22,7 +22,6 @@ import lombok.ToString;
     "sadness",
     "surprise"
 })
-@ToString
 public class Emotion {
 
     @JsonProperty("anger")
@@ -134,4 +133,18 @@ public class Emotion {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Emotion{" +
+                "anger=" + anger +
+                ", contempt=" + contempt +
+                ", disgust=" + disgust +
+                ", fear=" + fear +
+                ", happiness=" + happiness +
+                ", neutral=" + neutral +
+                ", sadness=" + sadness +
+                ", surprise=" + surprise +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

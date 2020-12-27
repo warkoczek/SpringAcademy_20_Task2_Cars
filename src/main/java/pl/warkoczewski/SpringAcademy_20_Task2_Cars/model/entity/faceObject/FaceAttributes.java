@@ -27,7 +27,6 @@ import lombok.ToString;
     "occlusion",
     "hair"
 })
-@ToString
 public class FaceAttributes {
 
     @JsonProperty("smile")
@@ -199,4 +198,23 @@ public class FaceAttributes {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "FaceAttributes{" +
+                "smile=" + smile +
+                ", headPose=" + headPose +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", facialHair=" + facialHair +
+                ", glasses='" + glasses + '\'' +
+                ", emotion=" + emotion +
+                ", blur=" + blur +
+                ", exposure=" + exposure +
+                ", noise=" + noise +
+                ", makeup=" + makeup +
+                ", occlusion=" + occlusion +
+                ", hair=" + hair +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

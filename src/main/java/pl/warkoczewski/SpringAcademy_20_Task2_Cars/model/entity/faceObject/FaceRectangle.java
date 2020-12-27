@@ -18,7 +18,6 @@ import lombok.ToString;
     "width",
     "height"
 })
-@ToString
 public class FaceRectangle {
 
     @JsonProperty("top")
@@ -82,4 +81,14 @@ public class FaceRectangle {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "FaceRectangle{" +
+                "top=" + top +
+                ", left=" + left +
+                ", width=" + width +
+                ", height=" + height +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

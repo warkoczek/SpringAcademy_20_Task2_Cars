@@ -17,7 +17,6 @@ import lombok.ToString;
     "faceRectangle",
     "faceAttributes"
 })
-@ToString
 public class FaceObject {
 
     @JsonProperty("faceId")
@@ -69,4 +68,13 @@ public class FaceObject {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "FaceObject{" +
+                "faceId='" + faceId + '\'' +
+                ", faceRectangle=" + faceRectangle +
+                ", faceAttributes=" + faceAttributes +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

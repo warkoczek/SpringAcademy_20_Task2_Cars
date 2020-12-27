@@ -16,7 +16,6 @@ import lombok.ToString;
     "color",
     "confidence"
 })
-@ToString
 public class HairColor {
 
     @JsonProperty("color")
@@ -56,4 +55,12 @@ public class HairColor {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "HairColor{" +
+                "color='" + color + '\'' +
+                ", confidence=" + confidence +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

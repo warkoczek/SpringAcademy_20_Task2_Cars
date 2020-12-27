@@ -16,7 +16,6 @@ import lombok.ToString;
     "eyeMakeup",
     "lipMakeup"
 })
-@ToString
 public class Makeup {
 
     @JsonProperty("eyeMakeup")
@@ -56,4 +55,12 @@ public class Makeup {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Makeup{" +
+                "eyeMakeup=" + eyeMakeup +
+                ", lipMakeup=" + lipMakeup +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

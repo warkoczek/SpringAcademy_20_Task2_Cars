@@ -16,7 +16,6 @@ import lombok.ToString;
     "exposureLevel",
     "value"
 })
-@ToString
 public class Exposure {
 
     @JsonProperty("exposureLevel")
@@ -56,4 +55,12 @@ public class Exposure {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Exposure{" +
+                "exposureLevel='" + exposureLevel + '\'' +
+                ", value=" + value +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }
