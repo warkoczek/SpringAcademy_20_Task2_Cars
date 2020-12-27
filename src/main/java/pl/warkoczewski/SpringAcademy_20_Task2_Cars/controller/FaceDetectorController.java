@@ -16,7 +16,6 @@ public class FaceDetectorController {
     public FaceDetectorController(FaceDetectorServiceImpl faceDetectorService) {
         this.faceDetectorService = faceDetectorService;
     }
-
     @GetMapping
     public String getFaceDetectorHomePage(){
         return "/face/home";
