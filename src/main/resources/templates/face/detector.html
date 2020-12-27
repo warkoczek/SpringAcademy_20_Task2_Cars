@@ -7,6 +7,16 @@
 </head>
 <body>
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br><br>
+<a><!--/*@thymesVar id="imageUrlDTO" type="pl.warkoczewski.SpringAcademy_20_Task2_Cars.dto.ImageUrlDTO"*/-->
+    <form th:action="@{/face/detector}" method="post" th:object="${imageUrlDTO}">
+        <div class="input-group">
+            <input type="text" class="form-control" name="url" th:field="*{url}" placeholder="Image URL">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default">Detect
+                    <i class="glyphicon glyphicon-search" style="color: green"></i></button><br><br>
+            </div>
+        </div>
+    </form></a>
 Face Image Recognition Detector
 
 </body>

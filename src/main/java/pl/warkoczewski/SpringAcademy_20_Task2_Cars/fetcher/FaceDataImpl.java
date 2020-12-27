@@ -38,7 +38,7 @@ public class FaceDataImpl implements FaceData{
     private HttpEntity<ImageUrl> getEntity(String url) {
         ImageUrl imageURL = new ImageUrl(url);
         HttpHeaders httpHeaders = getHeaders();
-        return new HttpEntity(imageURL, httpHeaders);
+        return new HttpEntity<>(imageURL, httpHeaders);
     }
 
     private HttpHeaders getHeaders() {
