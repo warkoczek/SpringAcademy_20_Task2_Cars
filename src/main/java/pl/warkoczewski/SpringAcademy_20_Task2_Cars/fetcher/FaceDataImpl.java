@@ -1,7 +1,5 @@
 package pl.warkoczewski.SpringAcademy_20_Task2_Cars.fetcher;
 
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;

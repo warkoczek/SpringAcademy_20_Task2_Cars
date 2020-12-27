@@ -25,7 +25,8 @@ public class FaceDetectorController {
         return "/face/home";
     }
     @GetMapping("/detector")
-    public String displayFaceDetectorPage(){
+    public String displayFaceDetectorPage(Model model){
+        model.addAttribute("imageUrlDTO", new ImageUrlDTO());
         return "/face/detector";
     }
 
