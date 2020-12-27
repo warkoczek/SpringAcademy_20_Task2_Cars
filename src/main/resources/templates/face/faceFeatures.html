@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: headFragment}">
     <meta charset="UTF-8">
-    <title>Detected Face Features</title>
+    <title>Face Features</title>
 </head>
 <body>
+<nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br><br>
+
+<div class="container">
+        <h2>Face Features</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+            <tr th:object="${faceFeatures}">
+                <td th:text="${faceFeatures.getFaceAttributes().getAge()}"></td>
+                <td th:text="${faceFeatures.getFaceAttributes().getGender()}"></td>
+            </tr>
+        </table>
 
 </body>
 </html>

@@ -12,7 +12,11 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.ImageUrl;
 
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.faceObject.FaceObject;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Controller
@@ -21,11 +25,14 @@ public class FaceDataImpl implements FaceData{
     private final static String IMAGE_URL = "https://scontent-frx5-1.xx.fbcdn.net/v/t31.0-8/883459_10151467534867696_473521144_o.jpg?_nc_cat=105&ccb=2&_nc_sid=2c4854&_nc_ohc=vEAkuK7yntAAX9VYMH3&_nc_ht=scontent-frx5-1.xx&oh=79faf689fd7ef89a1e84cbf5ac750b62&oe=600E6F17";
 
     @Override
-    public FaceObject[] getFaceData() {
+    public Optional<FaceObject> getFaceData(String url) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<FaceObject[]> exchange = restTemplate.exchange(FACE_API_URL, HttpMethod.POST
-                , getEntity(IMAGE_URL), FaceObject[].class);
-        return exchange.getBody();
+                , getEntity(url), FaceObject[].class);
+       //Stream.of(Objects.requireNonNull(exchange.getBody())).collect(Collectors.toList()).forEach(System.out :: println);
+       //Stream.ofNullable(exchange.getBody()).collect(Collectors.toList())
+        return Arrays.stream(exchange.getBody()).findFirst();
+
     }
 
     private HttpEntity<ImageUrl> getEntity(String url) {
