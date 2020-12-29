@@ -11,11 +11,8 @@ import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.ImageUrl;
 import pl.warkoczewski.SpringAcademy_20_Task2_Cars.model.entity.faceObject.FaceObject;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 public class FaceDataImpl implements FaceData{
