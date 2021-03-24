@@ -88,7 +88,7 @@ public class CarController {
     }
     //updateCar and patchUpdate
     @GetMapping("/update/{id}")
-    public ModelAndView geUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
+    public ModelAndView getUpdatePage(@PathVariable(value = "id") Long id, ModelAndView modelAndView){
         Car car = carService.showCarById(id).orElseThrow();
         modelAndView.setViewName("/car/update");
         modelAndView.addObject("car", car);
